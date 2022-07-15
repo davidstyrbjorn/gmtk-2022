@@ -15,6 +15,9 @@ public class LookAtMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Update sortingOrder to be players + 1
+        GetComponentInChildren<SpriteRenderer>().sortingOrder = playerSpriteRenderer.sortingOrder + 1;
+
         //  Rotation logic from Nade: https://youtu.be/6hp9-mslbzI
 
         Vector2 anchorPosition = Camera.main.WorldToScreenPoint(transform.position);
@@ -27,7 +30,7 @@ public class LookAtMouse : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
 
         //  Flip playersprite and gun if the mouse is on the left side of the player.
-        if(rotationZ > 90.0f || rotationZ < -90.0f)
+        if (rotationZ > 90.0f || rotationZ < -90.0f)
         {
             transform.localRotation = Quaternion.Euler(180.0f, 0, -rotationZ);
             playerSpriteRenderer.flipX = true;
