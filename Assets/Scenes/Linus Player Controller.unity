@@ -123,36 +123,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &549696715
+--- !u!1001 &806644601
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3231356054909013400, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3231356055315601691, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3231356055315601692, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9631226068377564396d1950dc2647ca, type: 3}
     - target: {fileID: 3231356055315601693, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3231356055315601693, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.26872763
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3231356055315601693, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.074341536
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3231356055315601693, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
       propertyPath: m_LocalPosition.z
