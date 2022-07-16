@@ -29,11 +29,27 @@ public class EditingTools : EditorWindow
         {
             GenerateMap();
         }
+        if (GUILayout.Button("Set Correct Sorting Order"))
+        {
+            SetCorrectSortingOrder();
+        }
     }
 
     private bool OnEdge(int x, int y, int width, int height)
     {
         return (x == 0) || (y == 0) || (x == width - 1) || (y == height - 1);
+    }
+
+    private void SetCorrectSortingOrder()
+    {
+        var walls_and_tiles = GameObject.Find("walls_and_tiles").GetComponentsInChildren<Transform>();
+        for (int i = 1; i < walls_and_tiles.Length; i++)
+        {
+            if (walls_and_tiles[i].transform.name.Contains("Wall"))
+            {
+                walls_and_tiles[i].GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-walls_and_tiles[i].transform.position.y);
+            }
+        }
     }
 
     private void GenerateMap()
@@ -53,6 +69,16 @@ public class EditingTools : EditorWindow
         float wallHeight = groundSize * 2;
         float wallOffset = groundSize;
 
+        // Load all our sprites
+        Sprite bottom = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Graphics/Environment/wall_back.png", typeof(Sprite));
+        Sprite bottomLeft = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Graphics/Environment/wall_corner_down_left.png", typeof(Sprite));
+        Sprite bottomRight = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Graphics/Environment/wall_corner_down_right.png", typeof(Sprite));
+        Sprite topLeft = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Graphics/Environment/wall_corner_up_left.png", typeof(Sprite));
+        Sprite topRight = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Graphics/Environment/wall_corner_up_right.png", typeof(Sprite));
+        Sprite top = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Graphics/Environment/wall_front.png", typeof(Sprite));
+        Sprite left = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Graphics/Environment/wall_side_left.png", typeof(Sprite));
+        Sprite right = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Graphics/Environment/wall_side_right.png", typeof(Sprite));
+
         // Generate all the ground and wall tiles
         foreach (int x in Enumerable.Range(0, width))
         {
@@ -60,12 +86,62 @@ public class EditingTools : EditorWindow
             {
                 if (OnEdge(x, y, width, height)) // Check if we're on an edge
                 {
+                    Sprite sprite = top;
+                    if (x == 0)
+                    {
+                        if (y == 0)
+                        {
+                            // Bottom left
+                            sprite = bottomLeft;
+                        }
+                        else if (y == height - 1)
+                        {
+                            // Top left
+                            sprite = topLeft;
+                        }
+                        else
+                        {
+                            // Left side
+                            sprite = left;
+                        }
+                    }
+                    else if (x == width - 1)
+                    {
+                        if (y == 0)
+                        {
+                            // Bottom right
+                            sprite = bottomRight;
+                        }
+                        else if (y == height - 1)
+                        {
+                            // Top right
+                            sprite = topRight;
+                        }
+                        else
+                        {
+                            // Right side
+                            sprite = right;
+                        }
+
+                    }
+                    else if (y == 0)
+                    {
+                        // Bottom side
+                        sprite = bottom;
+                    }
+                    else if (y == height - 1)
+                    {
+                        // Top side
+                        sprite = top;
+                    }
+
                     // Instantiate and place
                     var wall = Instantiate(wallPrefab).transform;
                     // Offset uppwards (y) with groundSize
                     wall.position = (new Vector3(x, y, 0) * groundSize) + (Vector3.up * (groundSize / 2));
                     wall.transform.SetParent(container);
                     wall.GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-wall.position.y);
+                    wall.GetComponent<SpriteRenderer>().sprite = sprite;
                     continue;
                 }
 
