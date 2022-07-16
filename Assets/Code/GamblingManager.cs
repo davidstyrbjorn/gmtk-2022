@@ -78,67 +78,82 @@ public class GamblingManager : MonoBehaviour
 
         if (!categoryFlag.GetValueOrDefault("four_of_a_kind"))
         {
-            categoryFlag.Add("four_of_a_kind", true);
-            // Four of a kind firerate
-            var ratio = 1 + (FindObjectOfType<ScoreFours>().score / FOURS_MAX);
-            switch (completions)
+            if (FindObjectOfType<ScoreFours>().score != 0)
             {
-                case 0:
-                    gunBehavior.pistolData.fireRate *= ratio;
-                    break;
-                case 1:
-                    gunBehavior.shotgunData.fireRate *= ratio;
-                    break;
-                case 2:
-                    gunBehavior.tommygunData.fireRate *= ratio;
-                    break;
+                categoryFlag.Add("four_of_a_kind", true);
+                // Four of a kind firerate
+                var ratio = 1 + (FindObjectOfType<ScoreFours>().score / FOURS_MAX);
+                switch (completions)
+                {
+                    case 0:
+                        gunBehavior.pistolData.fireRate *= ratio;
+                        break;
+                    case 1:
+                        gunBehavior.shotgunData.fireRate *= ratio;
+                        break;
+                    case 2:
+                        gunBehavior.tommygunData.fireRate *= ratio;
+                        break;
+                }
             }
         }
 
         // Two pairs decrease spread
         if (!categoryFlag.GetValueOrDefault("two_pairs"))
         {
-            categoryFlag.Add("two_pairs", true);
-            // At most we half the spread
-            var ratio = 1.0f + FindObjectOfType<ScoreTwoPair>().score / TWO_PAIR_MAX;
-            switch (completions)
+            if (FindObjectOfType<ScoreTwoPair>().score != 0)
             {
-                case 0:
-                    gunBehavior.pistolData.spread /= ratio;
-                    break;
-                case 1:
-                    gunBehavior.shotgunData.spread /= ratio;
-                    break;
-                case 2:
-                    gunBehavior.tommygunData.spread /= ratio;
-                    break;
+                categoryFlag.Add("two_pairs", true);
+                // At most we half the spread
+                var ratio = 1.0f + FindObjectOfType<ScoreTwoPair>().score / TWO_PAIR_MAX;
+                switch (completions)
+                {
+                    case 0:
+                        gunBehavior.pistolData.spread /= ratio;
+                        break;
+                    case 1:
+                        gunBehavior.shotgunData.spread /= ratio;
+                        break;
+                    case 2:
+                        gunBehavior.tommygunData.spread /= ratio;
+                        break;
+                }
             }
         }
 
         // Straight heals to max
         if (!categoryFlag.GetValueOrDefault("straight"))
         {
-            categoryFlag.Add("straight", true);
-            FindObjectOfType<PlayerController>().GetComponent<Health>().hp = 10;
+            if (FindObjectOfType<ScoreStraight>().score != 0)
+            {
+                categoryFlag.Add("straight", true);
+                FindObjectOfType<PlayerController>().GetComponent<Health>().hp = 10;
+            }
         }
 
         // Three of a kind increases movement speed
         if (!categoryFlag.GetValueOrDefault("three_of_a_kind"))
         {
-            categoryFlag.Add("three_of_a_kind", true);
-            // Max we increase movement speed by 1.5 factor
-            var ratio = 1.0f + ((FindObjectOfType<ScoreThrees>().score / THREES_MAX) * 0.5f);
-            FindObjectOfType<PlayerMovement>().moveSpeed *= ratio;
+            if (FindObjectOfType<ScoreThrees>().score != 0)
+            {
+                categoryFlag.Add("three_of_a_kind", true);
+                // Max we increase movement speed by 1.5 factor
+                var ratio = 1.0f + ((FindObjectOfType<ScoreThrees>().score / THREES_MAX) * 0.5f);
+                FindObjectOfType<PlayerMovement>().moveSpeed *= ratio;
+            }
         }
 
         // Yahtzee kills all enemies
         if (!categoryFlag.GetValueOrDefault("yahtzee"))
         {
-            categoryFlag.Add("yahtzee", true);
-            // Remove all enemies
-            foreach (var enemy in FindObjectsOfType<Enemy>())
+            if (FindObjectOfType<ScoreYatzhee>().score != 0)
             {
-                Destroy(enemy);
+                categoryFlag.Add("yahtzee", true);
+                // Remove all enemies
+                foreach (var enemy in FindObjectsOfType<Enemy>())
+                {
+                    Destroy(enemy.gameObject);
+                }
             }
         }
 
