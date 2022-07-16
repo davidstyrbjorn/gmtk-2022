@@ -13,13 +13,13 @@ public class LockScore : MonoBehaviour
     private void Start()
     {
         scoreFunc = GetComponent<ScoreFunction>();
-        gamblingManager = GameObject.Find("GamblingManager").GetComponent<GamblingManager>();
-        diceManager = GameObject.Find("DiceManager").GetComponent<DiceManager>();
+        gamblingManager = FindObjectOfType<GamblingManager>();
+        diceManager = FindObjectOfType<DiceManager>();
     }
 
     public void OnMouseEnter()
     {
-        if(!scoreFunc.isLocked)
+        if (!scoreFunc.isLocked)
             text.color = new Color(0, 1, 0);
     }
     public void OnMouseExit()
@@ -35,6 +35,9 @@ public class LockScore : MonoBehaviour
             text.color = new Color(1, 0, 0);
             gamblingManager.resetThrows();
             diceManager.UnlockAllDice();
+
+            FindObjectOfType<GameManager>().OnGamblingOver();
+            gamblingManager.ToggleGambling(false);
         }
     }
 }
