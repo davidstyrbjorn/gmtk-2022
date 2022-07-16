@@ -66,6 +66,9 @@ public class GamblingManager : MonoBehaviour
         needsUpdate = true;
         diceManager.Throw();
         throws++;
+        // Play SFX & Shake the camera
+        FindObjectOfType<SfxManager>().PlaySound("dice_throw", 1.0f, 1.0f);
+        FindObjectOfType<CameraShake>().DoShake(0.12f, 0.25f);
     }
 
     public void updateAll(int[] diceResults) // Update results and all aspects of UI.

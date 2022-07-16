@@ -17094,10 +17094,11 @@ MonoBehaviour:
   gameState: 1
   bg_barfight: {fileID: 20746809}
   bg_gamble: {fileID: 2034499770}
+  timesGambled: 0
   mapParent: {fileID: 168203906}
   enemyPrefab: {fileID: 7502274206300840073, guid: e7cf031dcdc2da84f95487c9edc9d6e0, type: 3}
   spawnPointsParent: {fileID: 1402636217}
-  barFightDuration: 30
+  barFightDuration: 10
   backgroundMusicVolume: 0.5
   countdownTimer: {fileID: 1393214651}
 --- !u!114 &1336898353
@@ -17127,6 +17128,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d2de17f13d8069f4eb25af89595fbdfe, type: 3}
   - name: gamble_fail
     clip: {fileID: 8300000, guid: 50112471682a67b4eac96df07ad86028, type: 3}
+  - name: dice_throw
+    clip: {fileID: 8300000, guid: e9561d215ddade145a39ec15a2e9bee2, type: 3}
+  - name: gamble_enter
+    clip: {fileID: 8300000, guid: f7ef9c92107989845a79b6a28ba09fd9, type: 3}
+  - name: gamble_exit
+    clip: {fileID: 8300000, guid: b1a2cd9b666de094986e9bf47958dd96, type: 3}
 --- !u!114 &1336898354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17142,6 +17149,7 @@ MonoBehaviour:
   needsUpdate: 0
   diceManager: {fileID: 1915356747}
   throws: 0
+  completions: 0
   scoreCategories: {fileID: 875747463}
   canvasScoreboard: {fileID: 661168511}
 --- !u!114 &1336898355
