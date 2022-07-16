@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GAME_STATE gameState = GAME_STATE.BAR_FIGHT;
     public AudioSource bg_barfight;
     public AudioSource bg_gamble;
+    [SerializeField] private Texture2D crosshairCursor;
+    [SerializeField] private Texture2D normalCursor;
 
     [Header("Gambling")]
     public int timesGambled = 0;
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 144;
+
+        Cursor.SetCursor(crosshairCursor, new Vector2(crosshairCursor.width / 2, crosshairCursor.height / 2), CursorMode.Auto);
 
         bg_barfight.volume = backgroundMusicVolume;
         bg_gamble.volume = backgroundMusicVolume;
@@ -108,6 +112,7 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<GamblingManager>().ToggleGambling(true);
         timesGambled++;
         gameState = GAME_STATE.GAMBLING;
+        Cursor.SetCursor(normalCursor, Vector2.zero, CursorMode.Auto);
     }
 
     public void OnGamblingOver()
@@ -117,6 +122,7 @@ public class GameManager : MonoBehaviour
         // Disable bar fight objects, set enabled to false
         ToggleBarFight(true);
         gameState = GAME_STATE.BAR_FIGHT;
+        Cursor.SetCursor(crosshairCursor, new Vector2(crosshairCursor.width/2, crosshairCursor.height/2), CursorMode.Auto);
         timeAtEnter = Time.timeSinceLevelLoad;
     }
 
