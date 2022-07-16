@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
             // Countdown UI
             int time = barFightDuration - Mathf.RoundToInt(timeSpentFighting);
-            countdownTimer.SetText("Neeeeed to gamble: " + time);
+            countdownTimer.SetText("NEED TO GAMBLE: " + time);
 
             // Transition volume
             bg_barfight.volume = Mathf.MoveTowards(bg_barfight.volume, backgroundMusicVolume, BG_CROSSFADE_SPEED * Time.deltaTime);

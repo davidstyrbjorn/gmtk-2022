@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be015dcbbee874a40a418546c9406381, type: 3}
   m_Name: Tommygun
   m_EditorClassIdentifier: 
-  gunSprite: {fileID: 21300000, guid: c28713bc4eb2e794d9fb310ec47c642d, type: 3}
+  gunSprite: {fileID: 21300000, guid: 437b35ff5b03e5443b5fa8531a4f6a62, type: 3}
   spread: 10
   fireRate: 7
   projectilesPerShot: 1
