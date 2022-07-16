@@ -23,7 +23,7 @@ public class SfxManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(string name, float volume = 1.0f)
+    public void PlaySound(string name, float volume = 1.0f, float delay = 0.0f)
     {
         if (sfxMap.TryGetValue(name, out AudioClip clip))
         {
@@ -31,9 +31,10 @@ public class SfxManager : MonoBehaviour
             source.clip = clip;
             source.playOnAwake = false;
             source.volume = volume;
-            source.Play();
+            if (delay > 0.01f) source.PlayDelayed(delay);
+            else source.Play();
             // Destroy after done playing
-            Destroy(source.gameObject, source.clip.length);
+            Destroy(source.gameObject, source.clip.length + delay);
             return;
         }
 
