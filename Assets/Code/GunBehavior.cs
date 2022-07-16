@@ -112,7 +112,7 @@ public class GunBehavior : MonoBehaviour
         ); // Camera shake
         muzzleFlash.SetActive(true); // Muzzle
         StartCoroutine(Muzzle());
-        sfxManager.PlaySound(gunData.name.ToLower(), 0.6f); // Play SFX
+        sfxManager.PlaySound(gunData.name.ToLower(), 0.3f); // Play SFX
     }
 
     IEnumerator Muzzle()
@@ -138,6 +138,9 @@ public class GunBehavior : MonoBehaviour
                 gunData = tommygunData;
                 break;
         }
+        // let fireRate = RewardsSystem.Get(Rewards::FireRate);
+        // -> 1 to 2
+        // gunData.fireRate *= fireRate
         spriteRenderer.sprite = gunData.gunSprite;
     }
 }

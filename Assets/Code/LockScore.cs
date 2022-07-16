@@ -31,6 +31,8 @@ public class LockScore : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+
+
             scoreFunc.isLocked = true;
             text.color = new Color(1, 0, 0);
             gamblingManager.resetThrows();
