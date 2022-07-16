@@ -8,9 +8,9 @@ public class GunBehavior : MonoBehaviour
 
     [SerializeField] private GameObject projectile;
 
-    [SerializeField] private GunData pistolData;
-    [SerializeField] private GunData shotgunData;
-    [SerializeField] private GunData tommygunData;
+    [SerializeField] public GunData pistolData;
+    [SerializeField] public GunData shotgunData;
+    [SerializeField] public GunData tommygunData;
 
     [SerializeField] private GameObject muzzleFlash;
 

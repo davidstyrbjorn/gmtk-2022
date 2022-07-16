@@ -10,16 +10,21 @@ public enum PassiveRewardTypes
 
 public class RewardsManager : MonoBehaviour
 {
+    [System.NonSerialized]
+    public float pistolFirerateModifier = 1.0f;
+    public float tommygunFirerateModifier = 1.0f;
+    public float shotgunFirerateModifier = 1.0f;
+
     public float GetReward(PassiveRewardTypes type)
     {
         switch (type)
         {
             default:
                 return 1.0f;
-            case PassiveRewardTypes.FIRE_RATE:
-                return 1f + (FindObjectOfType<ScoreOnePair>().score / 20f);
-            case PassiveRewardTypes.MOVE_SPEED:
-                return 1f + (FindObjectOfType<ScoreTwoPair>().score / 20f);
+                // case PassiveRewardTypes.FIRE_RATE:
+                //     return 1f + (FindObjectOfType<ScoreOnePair>().score / 20f);
+                // case PassiveRewardTypes.MOVE_SPEED:
+                //     return 1f + (FindObjectOfType<ScoreTwoPair>().score / 20f);
         }
 
         // Translate type into reward

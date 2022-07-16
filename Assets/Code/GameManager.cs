@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private const float MIN_SPAWN_TIME = 1.0f;
     private const float SPAWN_TIME_DECAY = 0.005f;
     private float timeSinceLastSpawn = 0.0f;
+    private Scale scale;
 
     private const float BG_CROSSFADE_SPEED = 0.5f;
     public float backgroundMusicVolume = 0.5f;
@@ -41,6 +42,9 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 144;
 
+        scale = FindObjectOfType<Scale>();
+
+        // Background music seutp
         bg_barfight.volume = backgroundMusicVolume;
         bg_gamble.volume = backgroundMusicVolume;
         bg_barfight.Play();
@@ -54,7 +58,7 @@ public class GameManager : MonoBehaviour
         // Bar fight updates
         if (gameState == GAME_STATE.BAR_FIGHT)
         {
-            timeSinceLastSpawn += 1.0f * Time.deltaTime;
+            timeSinceLastSpawn += (scale.GetEnemySpawnRateMultiplier() * Time.deltaTime);
             if (timeSinceLastSpawn > timeBetweenSpawns)
             {
                 SpawnEnemies();
@@ -77,8 +81,7 @@ public class GameManager : MonoBehaviour
         }
         else if (gameState == GAME_STATE.GAMBLING)
         {
-            // Whatever...
-
+            FindObjectOfType<PlayerController>().GetComponent<Animator>().SetBool("isRunning", false);
             // Transition volume
             bg_barfight.volume = Mathf.MoveTowards(bg_barfight.volume, 0.0f, BG_CROSSFADE_SPEED * Time.deltaTime);
             bg_gamble.volume = Mathf.MoveTowards(bg_gamble.volume, backgroundMusicVolume, BG_CROSSFADE_SPEED * Time.deltaTime);

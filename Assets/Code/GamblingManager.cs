@@ -17,42 +17,19 @@ public class GamblingManager : MonoBehaviour
     public int completions = 0;
     public GameObject scoreCategories;
     public GameObject canvasScoreboard;
+    private GunBehavior gunBehavior;
 
-    private Dictionary<string, System.Func<int[], int>> categoryToFunc = new Dictionary<string, System.Func<int[], int>>();
+    const int ONE_PAIR_MAX = 12;
+    const int TWO_PAIR_MAX = 22;
+    const int THREES_MAX = 18;
+    const int FOURS_MAX = 24;
+
+    private string[] categories = new string[] { "pair", "two_pairs", "three_of_a_kind", "four_of_a_kind", "straight", "yahtzee" };
+    private Dictionary<string, bool> categoryFlag = new Dictionary<string, bool>();
 
     void Awake()
     {
-        // Add all the categorical functions
-        // categoryToFunc.Add("One Pair", (int[] x) =>
-        // {
-        //     return 1;
-        // });
-        // categoryToFunc.Add("One Pair", (int[] x) =>
-        // {
-        //     return 1;
-        // });
-        // categoryToFunc.Add("One Pair", (int[] x) =>
-        // {
-        //     return 1;
-        // });
-        // categoryToFunc.Add("One Pair", (int[] x) =>
-        // {
-        //     return 1;
-        // });
-        // categoryToFunc.Add("One Pair", (int[] x) =>
-        // {
-        //     return 1;
-        // });
-        // categoryToFunc.Add("One Pair", (int[] x) =>
-        // {
-        //     return 1;
-        // });
-
-        // if (categoryToFunc.TryGetValue("One pair", out var scoreFunc))
-        // {
-        //     int[] r = new int[6];
-        //     scoreFunc.Invoke(r);
-        // }
+        gunBehavior = FindObjectOfType<GunBehavior>();
     }
 
     public void resetThrows()
@@ -96,7 +73,74 @@ public class GamblingManager : MonoBehaviour
                 totalScore += score.CountScore(results);
         }
 
-        // Did i get a pair of two's?
+        // We do this flag type of deal to increase the amount of sunlight my body gets before
+        // i burn up and this code melts into nothing but atoms 
+
+        if (!categoryFlag.GetValueOrDefault("four_of_a_kind"))
+        {
+            categoryFlag.Add("four_of_a_kind", true);
+            // Four of a kind firerate
+            var ratio = 1 + (FindObjectOfType<ScoreFours>().score / FOURS_MAX);
+            switch (completions)
+            {
+                case 0:
+                    gunBehavior.pistolData.fireRate *= ratio;
+                    break;
+                case 1:
+                    gunBehavior.shotgunData.fireRate *= ratio;
+                    break;
+                case 2:
+                    gunBehavior.tommygunData.fireRate *= ratio;
+                    break;
+            }
+        }
+
+        // Two pairs decrease spread
+        if (!categoryFlag.GetValueOrDefault("two_pairs"))
+        {
+            categoryFlag.Add("two_pairs", true);
+            // At most we half the spread
+            var ratio = 1.0f + FindObjectOfType<ScoreTwoPair>().score / TWO_PAIR_MAX;
+            switch (completions)
+            {
+                case 0:
+                    gunBehavior.pistolData.spread /= ratio;
+                    break;
+                case 1:
+                    gunBehavior.shotgunData.spread /= ratio;
+                    break;
+                case 2:
+                    gunBehavior.tommygunData.spread /= ratio;
+                    break;
+            }
+        }
+
+        // Straight heals to max
+        if (!categoryFlag.GetValueOrDefault("straight"))
+        {
+            categoryFlag.Add("straight", true);
+            FindObjectOfType<PlayerController>().GetComponent<Health>().hp = 10;
+        }
+
+        // Three of a kind increases movement speed
+        if (!categoryFlag.GetValueOrDefault("three_of_a_kind"))
+        {
+            categoryFlag.Add("three_of_a_kind", true);
+            // Max we increase movement speed by 1.5 factor
+            var ratio = 1.0f + ((FindObjectOfType<ScoreThrees>().score / THREES_MAX) * 0.5f);
+            FindObjectOfType<PlayerMovement>().moveSpeed *= ratio;
+        }
+
+        // Yahtzee kills all enemies
+        if (!categoryFlag.GetValueOrDefault("yahtzee"))
+        {
+            categoryFlag.Add("yahtzee", true);
+            // Remove all enemies
+            foreach (var enemy in FindObjectsOfType<Enemy>())
+            {
+                Destroy(enemy);
+            }
+        }
 
         // Threshold for playing gambling success/fail sfx?
         if (totalScore >= 15)
@@ -152,6 +196,8 @@ public class GamblingManager : MonoBehaviour
             score.isLocked = false;
         }
         completions++;
+        // Reset the flags
+        categoryFlag.Clear();
         return true;
     }
 

@@ -8,8 +8,12 @@ public class Chasing : MonoBehaviour
     private NavMeshAgent agent;
     public Transform target;
 
+    private const float BASE_SPEED = 2.5f;
+    private Scale scale;
+
     void Start()
     {
+        scale = FindObjectOfType<Scale>();
         agent = GetComponent<NavMeshAgent>();
         // The system rotates the GameObject, this is not what we want to disable rotational attributes on the agent
         agent.updateRotation = false;
@@ -21,6 +25,7 @@ public class Chasing : MonoBehaviour
 
     void FixedUpdate()
     {
+        agent.speed = 2.5f * scale.GetEnemyMovementMultiplier();
         // Set target for agent so it knows where to move
         agent.SetDestination(target.transform.position);
 
