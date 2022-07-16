@@ -30,14 +30,14 @@ public class Chasing : MonoBehaviour
         {
             agent.isStopped = true;
             // Is target player? And am I an enemy?
-            if (target.CompareTag("Player") && transform.CompareTag("enemy"))
-            {
-                // Get health component, decrease health
-                if (target.TryGetComponent(out Health player_health))
-                {
-                    player_health.TakeDamage(1);
-                }
-            }
+            // if (target.CompareTag("Player") && transform.CompareTag("enemy"))
+            // {
+            //     // Get health component, decrease health
+            //     if (target.TryGetComponent(out Health player_health))
+            //     {
+            //         player_health.TakeDamage(1);
+            //     }
+            // }
         }
         else
         {

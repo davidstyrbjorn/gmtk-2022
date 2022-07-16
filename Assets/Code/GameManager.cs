@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
             }
 
             // Increase the rate of spawn over time
-            print(timeBetweenSpawns);
             timeBetweenSpawns -= SPAWN_TIME_DECAY * Time.deltaTime;
             timeBetweenSpawns = Mathf.Max(MIN_SPAWN_TIME, timeBetweenSpawns);
         }

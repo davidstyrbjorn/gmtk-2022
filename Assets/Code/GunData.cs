@@ -11,4 +11,7 @@ public class GunData : ScriptableObject
     [Tooltip("Fire Rate is shots per second.")]
     public float fireRate;
     public int projectilesPerShot;
+
+    public float cameraShakeIntensity = 0.05f;
+    public float cameraShakeDecayRate = 0.1f;
 }
