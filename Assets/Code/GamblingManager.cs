@@ -117,7 +117,15 @@ public class GamblingManager : MonoBehaviour
     public void ToggleGambling(bool value)
     {
         diceManager.gameObject.SetActive(value);
-        canvasScoreboard.gameObject.SetActive(value);
+        // canvasScoreboard.gameObject.SetActive(value);
+        if (value)
+        {
+            canvasScoreboard.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            canvasScoreboard.transform.localScale = new Vector3(0, 0, 0);
+        }
 
         // Throw dice if we start the gambling
         if (value)

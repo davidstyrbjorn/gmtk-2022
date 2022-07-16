@@ -14,7 +14,6 @@ public class LockScore : MonoBehaviour
     {
         scoreFunc = GetComponent<ScoreFunction>();
         gamblingManager = FindObjectOfType<GamblingManager>();
-        diceManager = FindObjectOfType<DiceManager>();
     }
 
     public void OnMouseEnter()
@@ -36,7 +35,7 @@ public class LockScore : MonoBehaviour
                 scoreFunc.isLocked = true;
                 text.color = new Color(1, 0, 0);
                 gamblingManager.resetThrows();
-                diceManager.UnlockAllDice();
+                FindObjectOfType<DiceManager>().UnlockAllDice();
 
                 FindObjectOfType<GameManager>().OnGamblingOver();
                 gamblingManager.ToggleGambling(false);

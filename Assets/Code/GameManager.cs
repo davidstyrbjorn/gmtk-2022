@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.AI;
+using TMPro;
 
 public enum GAME_STATE
 {
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     public Transform mapParent;
     public GameObject enemyPrefab;
     public Transform spawnPointsParent;
+    private float timeAtEnter;
+    public int barFightDuration = 10;
     private float timeBetweenSpawns = 2.0f;
     private const float MIN_SPAWN_TIME = 1.0f;
     private const float SPAWN_TIME_DECAY = 0.005f;
@@ -30,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     private const float BG_CROSSFADE_SPEED = 0.5f;
     public float backgroundMusicVolume = 0.5f;
+
+    public TMPro.TextMeshProUGUI countdownTimer;
 
     void Start()
     {
@@ -54,14 +59,16 @@ public class GameManager : MonoBehaviour
                 SpawnEnemies();
             }
 
-            // Increase the rate of spawn over time
-            // timeBetweenSpawns -= SPAWN_TIME_DECAY * Time.deltaTime;
-            // timeBetweenSpawns = Mathf.Max(MIN_SPAWN_TIME, timeBetweenSpawns);
-
-            if (Input.GetKeyDown(KeyCode.G))
+            // Check if we spent enough time in the bar
+            float timeSpentFighting = Time.timeSinceLevelLoad - timeAtEnter;
+            if (timeSpentFighting > barFightDuration)
             {
                 OnBarFightOver();
             }
+
+            // Countdown UI
+            int time = barFightDuration - Mathf.RoundToInt(timeSpentFighting);
+            countdownTimer.SetText("Neeeeed to gamble: " + time);
 
             // Transition volume
             bg_barfight.volume = Mathf.MoveTowards(bg_barfight.volume, backgroundMusicVolume, BG_CROSSFADE_SPEED * Time.deltaTime);
@@ -75,8 +82,6 @@ public class GameManager : MonoBehaviour
             bg_barfight.volume = Mathf.MoveTowards(bg_barfight.volume, 0.0f, BG_CROSSFADE_SPEED * Time.deltaTime);
             bg_gamble.volume = Mathf.MoveTowards(bg_gamble.volume, backgroundMusicVolume, BG_CROSSFADE_SPEED * Time.deltaTime);
         }
-
-
     }
 
     void SpawnEnemies()
@@ -110,6 +115,7 @@ public class GameManager : MonoBehaviour
         // Disable bar fight objects, set enabled to false
         ToggleBarFight(true);
         gameState = GAME_STATE.BAR_FIGHT;
+        timeAtEnter = Time.timeSinceLevelLoad;
     }
 
     private void ToggleBarFight(bool value)
@@ -120,6 +126,7 @@ public class GameManager : MonoBehaviour
         var playerController = FindObjectOfType<PlayerController>();
         var gunBehavior = FindObjectOfType<GunBehavior>();
         var lookAtMouse = FindObjectOfType<LookAtMouse>();
+        var cameraFollow = FindObjectOfType<CameraFollow>();
 
         foreach (var enemy in enemies)
         {
@@ -136,5 +143,6 @@ public class GameManager : MonoBehaviour
         playerMovement.enabled = value;
         gunBehavior.enabled = value;
         lookAtMouse.enabled = value;
+        cameraFollow.enabled = value;
     }
 }
