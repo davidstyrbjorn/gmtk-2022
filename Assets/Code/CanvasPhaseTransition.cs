@@ -14,13 +14,19 @@ public class CanvasPhaseTransition : MonoBehaviour
         GameObject currGambleText = Instantiate(GambleText);
         currGambleText.transform.SetParent(gameObject.transform, false);
 
-        Instantiate(GambleParticles);
+        GameObject currGambleParticles = Instantiate(GambleParticles);
+
+        Destroy(currGambleText, 4.0f);
+        Destroy(currGambleParticles, 4.0f);
     }
 
     public void SpawnBattleTransition()
     {
         GameObject currBattleText = Instantiate(BattleText);
         currBattleText.transform.SetParent(gameObject.transform, false);
-        Instantiate(BattleParticles);
+        GameObject currBattleParticles = Instantiate(BattleParticles);
+
+        Destroy(currBattleText, 4.0f);
+        Destroy(currBattleParticles, 4.0f);
     }
 }
