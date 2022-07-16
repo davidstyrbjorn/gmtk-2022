@@ -29,15 +29,6 @@ public class Chasing : MonoBehaviour
         if (Vector2.Distance(target.position, transform.position) < EPS)
         {
             agent.isStopped = true;
-            // Is target player? And am I an enemy?
-            if (target.CompareTag("Player") && transform.CompareTag("enemy"))
-            {
-                // Get health component, decrease health
-                if (target.TryGetComponent(out Health player_health))
-                {
-                    player_health.TakeDamage(1);
-                }
-            }
         }
         else
         {

@@ -11,7 +11,6 @@ public class CameraShake : MonoBehaviour
     private float ShakeDecay;
     private float ShakeIntensity;
 
-    private Vector3 OriginalPos;
     private Quaternion OriginalRot;
 
     void Start()
@@ -23,11 +22,10 @@ public class CameraShake : MonoBehaviour
     {
         if (ShakeIntensity > 0)
         {
-            transform.position = OriginalPos + Random.insideUnitSphere * ShakeIntensity;
-            //transform.rotation = new Quaternion(OriginalRot.x + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
-            //                                OriginalRot.y + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
-            //                                OriginalRot.z + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
-            //                                OriginalRot.w + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f);
+            transform.rotation = new Quaternion(OriginalRot.x + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
+                                           OriginalRot.y + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
+                                           OriginalRot.z + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
+                                           OriginalRot.w + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f);
 
             ShakeIntensity -= ShakeDecay * Time.deltaTime;
 
@@ -41,8 +39,7 @@ public class CameraShake : MonoBehaviour
 
     public void DoShake(float _intensity = 0.12f, float _shakedecay = 0.0085f)
     {
-        OriginalPos = transform.position;
-        //OriginalRot = transform.rotation;
+        OriginalRot = Quaternion.identity;
 
         ShakeIntensity = _intensity;
         ShakeDecay = _shakedecay;

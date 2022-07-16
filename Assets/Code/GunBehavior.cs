@@ -18,6 +18,8 @@ public class GunBehavior : MonoBehaviour
     private int currGunIndex;
     private int gunInventorySize = 3;
 
+    private SfxManager sfxManager;
+
     float timeSinceLastShot;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,8 @@ public class GunBehavior : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = gunData.gunSprite;
+
+        sfxManager = FindObjectOfType<SfxManager>();
 
         timeSinceLastShot = gunData.fireRate;
         currGunIndex = 0;
@@ -93,17 +97,22 @@ public class GunBehavior : MonoBehaviour
         Vector2 targetPosition = Input.mousePosition;
 
         // Spread
-        for(int i = 0; i < gunData.projectilesPerShot; i++)
+        for (int i = 0; i < gunData.projectilesPerShot; i++)
         {
             Vector3 direction = (targetPosition - spawnPosition).normalized;
-            direction = Quaternion.Euler(0.0f, 0.0f, Random.Range(-gunData.spread/2.0f, gunData.spread/2.0f)) * direction;
+            direction = Quaternion.Euler(0.0f, 0.0f, Random.Range(-gunData.spread / 2.0f, gunData.spread / 2.0f)) * direction;
 
             GameObject currentProjectile = Instantiate(projectile, muzzleFlash.transform.position, transform.rotation);
             currentProjectile.GetComponent<Projectile>().SetDirection(direction);
         }
 
-        muzzleFlash.SetActive(true);
+        Camera.main.GetComponent<CameraShake>()
+            .DoShake(gunData.cameraShakeIntensity,
+            gunData.cameraShakeDecayRate
+        ); // Camera shake
+        muzzleFlash.SetActive(true); // Muzzle
         StartCoroutine(Muzzle());
+        sfxManager.PlaySound(gunData.name.ToLower(), 0.6f); // Play SFX
     }
 
     IEnumerator Muzzle()

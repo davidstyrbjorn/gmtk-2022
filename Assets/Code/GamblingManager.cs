@@ -11,6 +11,8 @@ public class GamblingManager : MonoBehaviour
     private DiceManager diceManager;
 
     private int[] results = new int[6];
+    [SerializeField]
+    private int throws = 0;
     public TextMeshProUGUI resultText;
     public GameObject scoreCategories;
 
@@ -22,10 +24,19 @@ public class GamblingManager : MonoBehaviour
         }
     }
 
+    public void resetThrows()
+    {
+        throws = 0;
+    }
+
     public void rollDice() 
     {
-        needsUpdate = true;
-        diceManager.Throw();
+        if(throws < 3)
+         {
+            needsUpdate = true;
+            diceManager.Throw();
+            throws++;
+        }
     }
 
     public void updateAll(int[] diceResults) // Update results and all aspects of UI.
@@ -65,7 +76,8 @@ public class GamblingManager : MonoBehaviour
     {
         foreach(ScoreFunction score in scoreCategories.GetComponentsInChildren<ScoreFunction>())
         {
-            score.CountScore(results);
+            if(!score.isLocked)
+                score.CountScore(results);
         }
     }
 

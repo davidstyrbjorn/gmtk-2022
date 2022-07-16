@@ -43,7 +43,7 @@ public class DiceManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Throw();
+            gamblingManager.rollDice();
         }
     }
 
@@ -83,7 +83,19 @@ public class DiceManager : MonoBehaviour
                 die.Throw();
         }
 
-        gamblingManager.needsUpdate = true; //Redundant if using button, can move spacebar trigger to gamblingManager.rollDice and remove this
         return true;
 	}
+
+    public bool UnlockAllDice()
+    {
+        if (!AllDiceSettled())
+            return false;
+
+        foreach (Die die in dice)
+        {
+            die.SetLocked(false);
+        }
+
+        return true;
+    }
 }

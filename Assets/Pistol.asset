@@ -16,3 +16,5 @@ MonoBehaviour:
   spread: 2
   fireRate: 2
   projectilesPerShot: 1
+  cameraShakeIntensity: 0.05
+  cameraShakeDecayRate: 0.2

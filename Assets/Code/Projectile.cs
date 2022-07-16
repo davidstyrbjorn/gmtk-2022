@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private float lifetime = 5.0f;
     [SerializeField] private float projectileSpeed = 10f;
- 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,4 +35,21 @@ public class Projectile : MonoBehaviour
         yield return new WaitForSeconds(lifetime);
         Destroy(gameObject);
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check for collision with enemy
+        if (other.transform.CompareTag("enemy"))
+        {
+            // Grab health component
+            if (other.TryGetComponent(out Health health))
+            {
+                health.TakeDamage(1);
+            }
+
+            // Remove this projectile
+            Destroy(gameObject);
+        }
+    }
+
 }
