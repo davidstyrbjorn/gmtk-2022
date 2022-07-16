@@ -6,7 +6,8 @@ public class Die : MonoBehaviour
 {
     Rigidbody rb;
     public float fallForce = 500;
-    public Vector3 dieVelocity;
+    public float getLooseForce = 20;
+
     private bool isLocked = false;
     public int value = 0;
 
@@ -27,20 +28,20 @@ public class Die : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+	private void FixedUpdate()
+    {
         if (!rb)
         {
             rb = GetComponent<Rigidbody>();
         }
-        dieVelocity = rb.velocity;
-        rb.AddForce(new Vector3(0, 0, fallForce * Time.deltaTime));
+        Vector3 force = new Vector3(0, 0, fallForce);
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isLocked)
-        {
-            Throw();
-        }
+        rb.AddForce(force);
     }
 
-	void Throw()
+	public void Throw()
 	{
         float dirX = Random.Range(0, 500);
         float dirY = Random.Range(0, 500);
@@ -58,6 +59,22 @@ public class Die : MonoBehaviour
 
         value = 0;
     }
+    public bool HasValue()
+	{
+        return value > 0;
+	}
+
+    public bool IsMoving()
+	{
+        float rotEpsilon = 0.1f;
+        bool rotationSettled = rb.angularVelocity.magnitude > rotEpsilon;
+
+        float velEpsilon = 0.1f;
+        bool positionSettled = rb.velocity.magnitude > velEpsilon;
+
+        return rotationSettled && positionSettled;
+    }
+
     public void SetLocked(bool aIsLocked)
 	{
         isLocked = aIsLocked;
