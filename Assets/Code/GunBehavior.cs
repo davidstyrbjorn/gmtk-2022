@@ -35,9 +35,9 @@ public class GunBehavior : MonoBehaviour
     void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        if(timeSinceLastShot >= (1.0f / gunData.fireRate))
+        if (timeSinceLastShot >= (1.0f / gunData.fireRate))
         {
-            if(Input.GetButton("Fire1"))
+            if (Input.GetButton("Fire1"))
             {
                 Shoot();
                 timeSinceLastShot = 0.0f;
@@ -45,7 +45,8 @@ public class GunBehavior : MonoBehaviour
         }
 
         // Weapon Switching: Numbers
-        if(Input.GetKeyDown(KeyCode.Alpha1)) {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
             currGunIndex = 0;
             currGunIndex = currGunIndex % gunInventorySize;
             SwitchGun(currGunIndex);
@@ -70,7 +71,7 @@ public class GunBehavior : MonoBehaviour
             currGunIndex = currGunIndex % gunInventorySize;
             SwitchGun(currGunIndex);
         }
-        else if(Input.GetAxis("Mouse ScrollWheel") < 0.0f)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0.0f)
         {
             currGunIndex--;
 

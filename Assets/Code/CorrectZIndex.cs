@@ -10,6 +10,7 @@ using UnityEngine;
 public class CorrectZIndex : MonoBehaviour
 {
     public bool updatePerFrame = true;
+    public int zOffset = 0;
     private SpriteRenderer sprite;
 
     void Awake()
@@ -21,6 +22,6 @@ public class CorrectZIndex : MonoBehaviour
     {
         if (!updatePerFrame) return;
 
-        sprite.sortingOrder = Mathf.RoundToInt(transform.position.y) - 1;
+        sprite.sortingOrder = Mathf.RoundToInt(-transform.position.y) + zOffset;
     }
 }

@@ -29,7 +29,8 @@ public class CameraShake : MonoBehaviour
             //                                OriginalRot.z + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f,
             //                                OriginalRot.w + Random.Range(-ShakeIntensity, ShakeIntensity) * .2f);
 
-            ShakeIntensity -= ShakeDecay;
+            ShakeIntensity -= ShakeDecay * Time.deltaTime;
+
         }
         else if (Shaking)
         {

@@ -39,6 +39,8 @@ public class EditingTools : EditorWindow
     private void GenerateMap()
     {
         var parent = new GameObject(level_name).transform; // Holder for the map
+        var container = new GameObject("walls_and_tiles").transform; // Holder for the objects
+        container.SetParent(parent);
 
         // Grab the prefab object from our Assets
         var groundPrefab = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Ground.prefab", typeof(GameObject));
@@ -60,16 +62,16 @@ public class EditingTools : EditorWindow
                     var wall = Instantiate(wallPrefab).transform;
                     // Offset uppwards (y) with groundSize
                     wall.position = (new Vector3(x, y, 0) * groundSize) + (Vector3.up * (groundSize / 2));
-                    wall.transform.SetParent(parent);
-                    wall.GetComponent<SpriteRenderer>().sortingOrder = height - y;
+                    wall.transform.SetParent(container);
+                    wall.GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-wall.position.y);
                     continue;
                 }
 
                 // Instantiate and place
                 var ground = Instantiate(groundPrefab).transform;
-                ground.SetParent(parent);
+                ground.SetParent(container);
                 ground.position = new Vector3(x, y, 0) * groundSize;
-                ground.GetComponent<SpriteRenderer>().sortingOrder = -10;
+                ground.GetComponent<SpriteRenderer>().sortingLayerName = "ground";
             }
         }
     }
