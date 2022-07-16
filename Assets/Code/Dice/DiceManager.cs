@@ -7,6 +7,8 @@ public class DiceManager : MonoBehaviour
     List<Die> dice;
 
     public int[] diceValuesDebug = new int[5];
+    [SerializeField]
+    private GamblingManager gamblingManager;
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +28,15 @@ public class DiceManager : MonoBehaviour
         {
             if (!dice[i].IsMoving() && dice[i].HasValue())
                  diceValuesDebug[i] = dice[i].value;
-             else
+            else
                  diceValuesDebug[i] = -1;                
-        }        
+        }
+        
+        if(gamblingManager.needsUpdate)
+        {
+            int[] values = new int[dice.Count];
+            if (GetValues(values)) gamblingManager.updateAll(values);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -72,6 +80,7 @@ public class DiceManager : MonoBehaviour
                 die.Throw();
         }
 
+        gamblingManager.needsUpdate = true; //Redundant if using button, can move spacebar trigger to gamblingManager.rollDice and remove this
         return true;
 	}
 }
