@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DiceManager : MonoBehaviour
 {
+    [SerializeField]
     List<Die> dice;
 
     public int[] diceValuesDebug = new int[5];
@@ -18,7 +19,9 @@ public class DiceManager : MonoBehaviour
         for (int i = 0; i < foundDice.Length; i++)
 		{
             dice.Add(foundDice[i]);
+            foundDice[i].Throw();
 		}
+        gamblingManager.rollDice();
     }
 
     // Update is called once per frame
@@ -40,7 +43,7 @@ public class DiceManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Throw();
+            gamblingManager.rollDice();
         }
     }
 
@@ -76,11 +79,10 @@ public class DiceManager : MonoBehaviour
 
         foreach (Die die in dice)
         {
-            if (!die.GetLocked())
+            if (!die.GetLocked()) 
                 die.Throw();
         }
 
-        gamblingManager.needsUpdate = true; //Redundant if using button, can move spacebar trigger to gamblingManager.rollDice and remove this
         return true;
 	}
 }
