@@ -85,4 +85,17 @@ public class DiceManager : MonoBehaviour
 
         return true;
 	}
+
+    public bool UnlockAllDice()
+    {
+        if (!AllDiceSettled())
+            return false;
+
+        foreach (Die die in dice)
+        {
+            die.SetLocked(false);
+        }
+
+        return true;
+    }
 }

@@ -1826,6 +1826,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188208603}
   m_CullTransparentMesh: 1
+--- !u!114 &1235256443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 534489318, guid: 0e24e12f4a113d74bbded2a81e233896, type: 3}
+  m_PrefabInstance: {fileID: 1315725268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08080f6792d99f3448e34351cd082e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1295863311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,6 +1891,26 @@ PrefabInstance:
       propertyPath: gamblingManager
       value: 
       objectReference: {fileID: 1339072386}
+    - target: {fileID: 6661023913008787697, guid: 0e24e12f4a113d74bbded2a81e233896, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661023913110623968, guid: 0e24e12f4a113d74bbded2a81e233896, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661023913888059955, guid: 0e24e12f4a113d74bbded2a81e233896, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661023914217013342, guid: 0e24e12f4a113d74bbded2a81e233896, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661023914788641239, guid: 0e24e12f4a113d74bbded2a81e233896, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9170308198852051782, guid: 0e24e12f4a113d74bbded2a81e233896, type: 3}
       propertyPath: m_Name
       value: DiceManager
@@ -1890,11 +1921,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170308198852051783, guid: 0e24e12f4a113d74bbded2a81e233896, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.976945
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9170308198852051783, guid: 0e24e12f4a113d74bbded2a81e233896, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.763295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9170308198852051783, guid: 0e24e12f4a113d74bbded2a81e233896, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1960,7 +1991,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   needsUpdate: 0
-  diceManager: {fileID: 0}
+  diceManager: {fileID: 1235256443}
+  throws: 0
   resultText: {fileID: 1759841825}
   scoreCategories: {fileID: 1295863311}
 --- !u!4 &1339072387

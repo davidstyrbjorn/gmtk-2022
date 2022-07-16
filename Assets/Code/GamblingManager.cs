@@ -24,6 +24,11 @@ public class GamblingManager : MonoBehaviour
         }
     }
 
+    public void resetThrows()
+    {
+        throws = 0;
+    }
+
     public void rollDice() 
     {
         if(throws < 3)
@@ -71,7 +76,8 @@ public class GamblingManager : MonoBehaviour
     {
         foreach(ScoreFunction score in scoreCategories.GetComponentsInChildren<ScoreFunction>())
         {
-            score.CountScore(results);
+            if(!score.isLocked)
+                score.CountScore(results);
         }
     }
 

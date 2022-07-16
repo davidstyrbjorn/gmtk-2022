@@ -6,7 +6,7 @@ using TMPro;
 public abstract class ScoreFunction : MonoBehaviour
 {
     public TextMeshProUGUI scoreVisualizer;
-    protected bool isLocked;
+    public bool isLocked;
     protected int score;
 
 
