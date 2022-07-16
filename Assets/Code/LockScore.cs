@@ -37,9 +37,20 @@ public class LockScore : MonoBehaviour
                 gamblingManager.resetThrows();
                 FindObjectOfType<DiceManager>().UnlockAllDice();
 
+                //Is the sheet completed?
+                if (gamblingManager.AttemptResetSheet())
+                {
+                    gamblingManager.ResetColors();
+                }
+
                 FindObjectOfType<GameManager>().OnGamblingOver();
                 gamblingManager.ToggleGambling(false);
             }
         }
+    }
+
+    public void ResetColor()
+    {
+        text.color = new Color(1, 1, 1);
     }
 }

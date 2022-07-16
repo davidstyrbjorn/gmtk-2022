@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public AudioSource bg_gamble;
 
     [Header("Gambling")]
+    public int timesGambled = 0;
 
     [Header("Bar Fight")]
     public Transform mapParent;
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<CanvasPhaseTransition>().SpawnGambleTransition(); // Transition effect, runs on canvas
         ToggleBarFight(false);
         FindObjectOfType<GamblingManager>().ToggleGambling(true);
+        timesGambled++;
         gameState = GAME_STATE.GAMBLING;
     }
 

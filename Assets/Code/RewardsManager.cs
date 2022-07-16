@@ -6,7 +6,6 @@ public enum PassiveRewardTypes
 {
     FIRE_RATE,
     MOVE_SPEED,
-
 }
 
 public class RewardsManager : MonoBehaviour

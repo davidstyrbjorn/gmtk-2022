@@ -13,6 +13,8 @@ public class GamblingManager : MonoBehaviour
     private int[] results = new int[6];
     [SerializeField]
     private int throws = 0;
+
+    public int completions = 0;
     public GameObject scoreCategories;
     public GameObject canvasScoreboard;
 
@@ -131,6 +133,30 @@ public class GamblingManager : MonoBehaviour
         if (value)
         {
             rollDice();
+        }
+    }
+
+    public bool AttemptResetSheet()
+    {
+        var scores = scoreCategories.GetComponentsInChildren<ScoreFunction>();
+        foreach (ScoreFunction score in scores)
+        {
+            if (!score.isLocked) return false;
+        }
+
+        foreach (ScoreFunction score in scores)
+        {
+            score.isLocked = false;
+        }
+        completions++;
+        return true;
+    }
+
+    public void ResetColors()
+    {
+        foreach (LockScore scoreLock in scoreCategories.GetComponentsInChildren<LockScore>())
+        {
+            scoreLock.ResetColor();
         }
     }
 }
