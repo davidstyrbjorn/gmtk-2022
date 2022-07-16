@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class GamblingManager : MonoBehaviour
 {
     [SerializeField]
@@ -14,6 +15,43 @@ public class GamblingManager : MonoBehaviour
     private int throws = 0;
     public GameObject scoreCategories;
     public GameObject canvasScoreboard;
+
+    private Dictionary<string, System.Func<int[], int>> categoryToFunc = new Dictionary<string, System.Func<int[], int>>();
+
+    void Awake()
+    {
+        // Add all the categorical functions
+        // categoryToFunc.Add("One Pair", (int[] x) =>
+        // {
+        //     return 1;
+        // });
+        // categoryToFunc.Add("One Pair", (int[] x) =>
+        // {
+        //     return 1;
+        // });
+        // categoryToFunc.Add("One Pair", (int[] x) =>
+        // {
+        //     return 1;
+        // });
+        // categoryToFunc.Add("One Pair", (int[] x) =>
+        // {
+        //     return 1;
+        // });
+        // categoryToFunc.Add("One Pair", (int[] x) =>
+        // {
+        //     return 1;
+        // });
+        // categoryToFunc.Add("One Pair", (int[] x) =>
+        // {
+        //     return 1;
+        // });
+
+        // if (categoryToFunc.TryGetValue("One pair", out var scoreFunc))
+        // {
+        //     int[] r = new int[6];
+        //     scoreFunc.Invoke(r);
+        // }
+    }
 
     public void resetThrows()
     {
@@ -46,10 +84,23 @@ public class GamblingManager : MonoBehaviour
 
     public void updateScores()
     {
+        int totalScore = 0;
         foreach (ScoreFunction score in scoreCategories.GetComponentsInChildren<ScoreFunction>())
         {
             if (!score.isLocked)
-                score.CountScore(results);
+                totalScore += score.CountScore(results);
+        }
+
+        // Did i get a pair of two's?
+
+        // Threshold for playing gambling success/fail sfx?
+        if (totalScore >= 15)
+        {
+            FindObjectOfType<SfxManager>().PlaySound("gamble_success");
+        }
+        if (totalScore == 0)
+        {
+            FindObjectOfType<SfxManager>().PlaySound("gamble_fail");
         }
     }
 

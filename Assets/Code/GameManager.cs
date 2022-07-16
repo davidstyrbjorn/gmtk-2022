@@ -14,6 +14,8 @@ public enum GAME_STATE
 public class GameManager : MonoBehaviour
 {
     public GAME_STATE gameState = GAME_STATE.BAR_FIGHT;
+    public AudioSource bg_barfight;
+    public AudioSource bg_gamble;
 
     [Header("Gambling")]
 
@@ -26,9 +28,19 @@ public class GameManager : MonoBehaviour
     private const float SPAWN_TIME_DECAY = 0.005f;
     private float timeSinceLastSpawn = 0.0f;
 
+    private const float BG_CROSSFADE_SPEED = 0.5f;
+    public float backgroundMusicVolume = 0.5f;
+
     void Start()
     {
         Application.targetFrameRate = 144;
+
+        bg_barfight.volume = backgroundMusicVolume;
+        bg_gamble.volume = backgroundMusicVolume;
+        bg_barfight.Play();
+        bg_gamble.Play();
+        bg_barfight.loop = true;
+        bg_gamble.loop = true;
     }
 
     void Update()
@@ -50,10 +62,18 @@ public class GameManager : MonoBehaviour
             {
                 OnBarFightOver();
             }
+
+            // Transition volume
+            bg_barfight.volume = Mathf.MoveTowards(bg_barfight.volume, backgroundMusicVolume, BG_CROSSFADE_SPEED * Time.deltaTime);
+            bg_gamble.volume = Mathf.MoveTowards(bg_gamble.volume, 0.0f, BG_CROSSFADE_SPEED * Time.deltaTime);
         }
         else if (gameState == GAME_STATE.GAMBLING)
         {
             // Whatever...
+
+            // Transition volume
+            bg_barfight.volume = Mathf.MoveTowards(bg_barfight.volume, 0.0f, BG_CROSSFADE_SPEED * Time.deltaTime);
+            bg_gamble.volume = Mathf.MoveTowards(bg_gamble.volume, backgroundMusicVolume, BG_CROSSFADE_SPEED * Time.deltaTime);
         }
 
 
@@ -76,6 +96,7 @@ public class GameManager : MonoBehaviour
 
     public void OnBarFightOver()
     {
+        FindObjectOfType<SfxManager>().PlaySound("gamble_enter");
         FindObjectOfType<CanvasPhaseTransition>().SpawnGambleTransition(); // Transition effect, runs on canvas
         ToggleBarFight(false);
         FindObjectOfType<GamblingManager>().ToggleGambling(true);
@@ -84,6 +105,7 @@ public class GameManager : MonoBehaviour
 
     public void OnGamblingOver()
     {
+        FindObjectOfType<SfxManager>().PlaySound("gamble_exit");
         FindObjectOfType<CanvasPhaseTransition>().SpawnBattleTransition(); // Transition effect, runs on canvas
         // Disable bar fight objects, set enabled to false
         ToggleBarFight(true);
