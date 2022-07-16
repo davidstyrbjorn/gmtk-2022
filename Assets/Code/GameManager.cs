@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
+using UnityEngine.AI;
 
 public enum GAME_STATE
 {
@@ -45,7 +45,18 @@ public class GameManager : MonoBehaviour
             // Increase the rate of spawn over time
             timeBetweenSpawns -= SPAWN_TIME_DECAY * Time.deltaTime;
             timeBetweenSpawns = Mathf.Max(MIN_SPAWN_TIME, timeBetweenSpawns);
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                OnBarFightOver();
+            }
         }
+        else if (gameState == GAME_STATE.GAMBLING)
+        {
+            // Whatever...
+        }
+
+
     }
 
     void SpawnEnemies()
@@ -66,5 +77,45 @@ public class GameManager : MonoBehaviour
             var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
             enemy.transform.SetParent(mapParent);
         }
+    }
+
+    public void OnBarFightOver()
+    {
+        ToggleBarFight(false);
+        FindObjectOfType<GamblingManager>().ToggleGambling(true);
+        gameState = GAME_STATE.GAMBLING;
+    }
+
+    public void OnGamblingOver()
+    {
+        // Disable bar fight objects, set enabled to falses
+        ToggleBarFight(true);
+        gameState = GAME_STATE.BAR_FIGHT;
+    }
+
+    private void ToggleBarFight(bool value)
+    {
+        var enemies = FindObjectsOfType<Enemy>();
+        var hps = FindObjectsOfType<Health>();
+        var playerMovement = FindObjectOfType<PlayerMovement>();
+        var playerController = FindObjectOfType<PlayerController>();
+        var gunBehavior = FindObjectOfType<GunBehavior>();
+        var lookAtMouse = FindObjectOfType<LookAtMouse>();
+
+        foreach (var enemy in enemies)
+        {
+            enemy.enabled = value;
+            // Also toggle chasing & navmeshagent
+            enemy.GetComponent<Chasing>().enabled = value;
+            enemy.GetComponent<NavMeshAgent>().enabled = value;
+        }
+        foreach (var hp in hps)
+        {
+            hp.enabled = value;
+        }
+        // TODO: Maybe these should also be lists?
+        playerMovement.enabled = value;
+        gunBehavior.enabled = value;
+        lookAtMouse.enabled = value;
     }
 }

@@ -8,19 +8,21 @@ public class DiceManager : MonoBehaviour
     List<Die> dice;
 
     public int[] diceValuesDebug = new int[5];
-    [SerializeField]
+    [System.NonSerialized]
     private GamblingManager gamblingManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gamblingManager = FindObjectOfType<GamblingManager>();
+
         Die[] foundDice = GetComponentsInChildren<Die>();
         dice = new List<Die>();
         for (int i = 0; i < foundDice.Length; i++)
-		{
+        {
             dice.Add(foundDice[i]);
             foundDice[i].Throw();
-		}
+        }
         gamblingManager.rollDice();
     }
 
@@ -30,12 +32,12 @@ public class DiceManager : MonoBehaviour
         for (int i = 0; i < dice.Count; i++)
         {
             if (!dice[i].IsMoving() && dice[i].HasValue())
-                 diceValuesDebug[i] = dice[i].value;
+                diceValuesDebug[i] = dice[i].value;
             else
-                 diceValuesDebug[i] = -1;                
+                diceValuesDebug[i] = -1;
         }
-        
-        if(gamblingManager.needsUpdate)
+
+        if (gamblingManager.needsUpdate)
         {
             int[] values = new int[dice.Count];
             if (GetValues(values)) gamblingManager.updateAll(values);
@@ -49,42 +51,42 @@ public class DiceManager : MonoBehaviour
 
     public bool AllDiceSettled()
     {
-		foreach (Die die in dice)
-		{
+        foreach (Die die in dice)
+        {
             if (die.IsMoving())
                 return false;
             if (!die.HasValue())
                 return false;
-		}
+        }
         return true;
     }
 
     public bool GetValues(int[] outValues)
-	{
+    {
         if (!AllDiceSettled())
             return false;
 
-		for (int i = 0; i < dice.Count; i++)
-		{
+        for (int i = 0; i < dice.Count; i++)
+        {
             outValues[i] = dice[i].value;
-		}
+        }
 
         return true;
-	}
+    }
 
     public bool Throw()
-	{
+    {
         if (!AllDiceSettled())
             return false;
 
         foreach (Die die in dice)
         {
-            if (!die.GetLocked()) 
+            if (!die.GetLocked())
                 die.Throw();
         }
 
         return true;
-	}
+    }
 
     public bool UnlockAllDice()
     {

@@ -7,76 +7,48 @@ public class GamblingManager : MonoBehaviour
 {
     [SerializeField]
     public bool needsUpdate = false;
-    [SerializeField]
-    private DiceManager diceManager;
+    public DiceManager diceManager;
 
     private int[] results = new int[6];
     [SerializeField]
     private int throws = 0;
-    public TextMeshProUGUI resultText;
     public GameObject scoreCategories;
-
-    public void Start()
-    {
-        if (!resultText)
-        {
-            Debug.LogError("No text output for GamblingManager is set!");
-        }
-    }
+    public GameObject canvasScoreboard;
 
     public void resetThrows()
     {
         throws = 0;
     }
 
-    public void rollDice() 
+    public void rollDice()
     {
-        if(throws < 3)
-         {
-            needsUpdate = true;
-            diceManager.Throw();
-            throws++;
-        }
+        if (throws >= 3) return;
+        needsUpdate = true;
+        diceManager.Throw();
+        throws++;
     }
 
     public void updateAll(int[] diceResults) // Update results and all aspects of UI.
     {
         updateResults(diceResults);
-        updateText();
         updateScores();
         needsUpdate = false;
     }
-    
+
     public void updateResults(int[] diceResults) // Update dice results.
     {
-        results = diceResults;
-        updateText();
         results = new int[6]; //Reset the results
-        for (int i = 0; i < diceResults.Length; i++) 
+        for (int i = 0; i < diceResults.Length; i++)
         {
             results[diceResults[i] - 1]++;
         }
     }
 
-    public void updateText()
-    {
-        string tempText = "";
-
-        for (int i = 0; i < results.Length; i++)
-        {
-            tempText += results[i] + " ";
-        }
-
-        tempText = tempText[0..^1]; //Remove last space
-
-        resultText.text = tempText;
-    }
-
     public void updateScores()
     {
-        foreach(ScoreFunction score in scoreCategories.GetComponentsInChildren<ScoreFunction>())
+        foreach (ScoreFunction score in scoreCategories.GetComponentsInChildren<ScoreFunction>())
         {
-            if(!score.isLocked)
+            if (!score.isLocked)
                 score.CountScore(results);
         }
     }
@@ -89,5 +61,17 @@ public class GamblingManager : MonoBehaviour
     public void rollStraight()
     {
         updateAll(new int[5] { 1, 1, 1, 1, 1 });
+    }
+
+    public void ToggleGambling(bool value)
+    {
+        diceManager.gameObject.SetActive(value);
+        canvasScoreboard.gameObject.SetActive(value);
+
+        // Throw dice if we start the gambling
+        if (value)
+        {
+            rollDice();
+        }
     }
 }
