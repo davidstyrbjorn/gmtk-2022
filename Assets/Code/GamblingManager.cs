@@ -22,7 +22,7 @@ public class GamblingManager : MonoBehaviour
         }
     }
 
-    public void rollDice() // TO BE REMOVED
+    public void rollDice() 
     {
         needsUpdate = true;
         diceManager.Throw();
