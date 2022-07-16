@@ -1857,7 +1857,7 @@ Transform:
   m_Children:
   - {fileID: 224660417}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &179063426
 GameObject:
@@ -11679,6 +11679,7 @@ GameObject:
   - component: {fileID: 1357418281}
   - component: {fileID: 1357418280}
   - component: {fileID: 1357418283}
+  - component: {fileID: 1357418284}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11762,6 +11763,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b30efc72abff2540a424093b874ddf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1357418284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357418279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e7146023722f8448c6bbf39bc593d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1362175328
@@ -14101,21 +14114,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1387181264, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
-      propertyPath: hp
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1387181264, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
-      propertyPath: invinsibilityTimer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3231356055315601691, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3231356055315601693, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3231356055315601693, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17973,7 +17978,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6610734043966036476, guid: e7cf031dcdc2da84f95487c9edc9d6e0, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6610734043966036476, guid: e7cf031dcdc2da84f95487c9edc9d6e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18034,7 +18039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7208422251733810426, guid: 232d31dc456ab4149951a495f09513e4, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7208422251733810426, guid: 232d31dc456ab4149951a495f09513e4, type: 3}
       propertyPath: m_LocalPosition.x
