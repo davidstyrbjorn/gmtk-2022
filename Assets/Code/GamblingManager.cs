@@ -6,7 +6,9 @@ using TMPro;
 public class GamblingManager : MonoBehaviour
 {
     [SerializeField]
-    private int numberOfDice = 5;
+    public bool needsUpdate = false;
+    [SerializeField]
+    private DiceManager diceManager;
 
     private int[] results = new int[6];
     public TextMeshProUGUI resultText;
@@ -20,19 +22,29 @@ public class GamblingManager : MonoBehaviour
         }
     }
 
-    public void rollDice()
+    public void rollDice() // TO BE REMOVED
     {
-        results = new int[6]; //Reset the results
+        needsUpdate = true;
+        diceManager.Throw();
+    }
 
-        for (int i = 0; i < numberOfDice; i++) //
-        {
-            int result = Random.Range(1, 7);
-            results[result - 1]++;
-        }
-
+    public void updateAll(int[] diceResults) // Update results and all aspects of UI.
+    {
+        updateResults(diceResults);
         updateText();
-
-        checkScore();
+        updateScores();
+        needsUpdate = false;
+    }
+    
+    public void updateResults(int[] diceResults) // Update dice results.
+    {
+        results = diceResults;
+        updateText();
+        results = new int[6]; //Reset the results
+        for (int i = 0; i < diceResults.Length; i++) 
+        {
+            results[diceResults[i] - 1]++;
+        }
     }
 
     public void updateText()
@@ -49,7 +61,7 @@ public class GamblingManager : MonoBehaviour
         resultText.text = tempText;
     }
 
-    public void checkScore()
+    public void updateScores()
     {
         foreach(ScoreFunction score in scoreCategories.GetComponentsInChildren<ScoreFunction>())
         {
@@ -59,19 +71,11 @@ public class GamblingManager : MonoBehaviour
 
     public void rollYatzhee()
     {
-        results = new int[6] { 0, 0, 0, 0, 0, 5 };
-
-        updateText();
-
-        checkScore();
+        updateAll(new int[6] { 0, 0, 0, 0, 0, 5 });
     }
 
     public void rollStraight()
     {
-        results = new int[6] { 0, 1, 1, 1, 1, 1 };
-
-        updateText();
-
-        checkScore();
+        updateAll(new int[5] { 1, 1, 1, 1, 1 });
     }
 }
