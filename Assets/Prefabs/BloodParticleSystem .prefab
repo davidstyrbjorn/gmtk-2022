@@ -12,6 +12,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1633590861392789892, guid: d36de245bc2eca845b35eb662145478c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633590861392789892, guid: d36de245bc2eca845b35eb662145478c, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633590861392789892, guid: d36de245bc2eca845b35eb662145478c, type: 3}
       propertyPath: UVModule.sprites.Array.data[0].sprite
       value: 
       objectReference: {fileID: 21300000, guid: cf4d20fa24fd8b242b75fb511465f67c, type: 3}
