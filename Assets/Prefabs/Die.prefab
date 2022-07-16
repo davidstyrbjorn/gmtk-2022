@@ -319,8 +319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bdd166ed34d124e994b8d5320f7ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallForce: 1000
-  dieVelocity: {x: 0, y: 0, z: 0}
+  fallForce: 40
+  getLooseForce: 5
   value: 0
 --- !u!114 &2536598945708887119
 MonoBehaviour:

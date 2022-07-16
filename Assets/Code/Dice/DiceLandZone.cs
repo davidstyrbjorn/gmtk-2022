@@ -22,11 +22,8 @@ public class DiceLandZone : MonoBehaviour
         if (dieSide != null)
         {
             Die die = other.GetComponentInParent<Die>();
-            float epsilon = 0.001f;
-            if (die.dieVelocity.magnitude < epsilon)
-            {
-                die.value = 7 - dieSide.value;
-            }
+            
+            die.value = 7 - dieSide.value;
         }
     }
 }

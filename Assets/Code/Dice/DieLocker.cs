@@ -25,7 +25,8 @@ public class DieLocker : MonoBehaviour
 				{
 				    if (rigidBody.gameObject.TryGetComponent(out Die die))
                     {
-                        die.SetLocked(!die.GetLocked());
+                        if (!die.IsMoving())
+                            die.SetLocked(!die.GetLocked());
 				    }
                 }
             }
