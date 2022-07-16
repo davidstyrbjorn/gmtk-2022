@@ -17389,8 +17389,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 99.9
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 26.84
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -22114,6 +22114,7 @@ GameObject:
   - component: {fileID: 1700355254}
   - component: {fileID: 1700355253}
   - component: {fileID: 1700355252}
+  - component: {fileID: 1700355256}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -22154,7 +22155,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -22180,7 +22181,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &1700355255
 RectTransform:
@@ -22203,6 +22204,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1700355256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700355251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0baf8f8672ae3bf4b9824b773443cbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GambleText: {fileID: 2664329543055480158, guid: 8d2f05bcd8551e54787eca1e0d2d6ccc, type: 3}
+  GambleParticles: {fileID: 1633590861392789896, guid: d36de245bc2eca845b35eb662145478c, type: 3}
+  BattleText: {fileID: 4699168722131406222, guid: 6e25cdade143cfc4c9acae7159c3e337, type: 3}
+  BattleParticles: {fileID: 5694461238619368466, guid: d1324754c6629fc46af7ace61d81515d, type: 3}
 --- !u!1 &1704832833
 GameObject:
   m_ObjectHideFlags: 0

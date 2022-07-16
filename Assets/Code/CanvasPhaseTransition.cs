@@ -15,6 +15,7 @@ public class CanvasPhaseTransition : MonoBehaviour
         currGambleText.transform.SetParent(gameObject.transform, false);
 
         GameObject currGambleParticles = Instantiate(GambleParticles);
+        currGambleParticles.transform.position = (Vector2)Camera.main.transform.position;
 
         Destroy(currGambleText, 4.0f);
         Destroy(currGambleParticles, 4.0f);
@@ -25,6 +26,8 @@ public class CanvasPhaseTransition : MonoBehaviour
         GameObject currBattleText = Instantiate(BattleText);
         currBattleText.transform.SetParent(gameObject.transform, false);
         GameObject currBattleParticles = Instantiate(BattleParticles);
+        currBattleParticles.transform.position = (Vector2)Camera.main.transform.position;
+
 
         Destroy(currBattleText, 4.0f);
         Destroy(currBattleParticles, 4.0f);

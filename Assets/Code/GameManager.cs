@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void OnBarFightOver()
     {
+        FindObjectOfType<CanvasPhaseTransition>().SpawnGambleTransition(); // Transition effect, runs on canvas
         ToggleBarFight(false);
         FindObjectOfType<GamblingManager>().ToggleGambling(true);
         gameState = GAME_STATE.GAMBLING;
@@ -83,7 +84,8 @@ public class GameManager : MonoBehaviour
 
     public void OnGamblingOver()
     {
-        // Disable bar fight objects, set enabled to falses
+        FindObjectOfType<CanvasPhaseTransition>().SpawnBattleTransition(); // Transition effect, runs on canvas
+        // Disable bar fight objects, set enabled to false
         ToggleBarFight(true);
         gameState = GAME_STATE.BAR_FIGHT;
     }
