@@ -41,6 +41,8 @@ public class EditingTools : EditorWindow
         var parent = new GameObject(level_name).transform; // Holder for the map
         var container = new GameObject("walls_and_tiles").transform; // Holder for the objects
         container.SetParent(parent);
+        var spawnPoints = new GameObject("spawn_points").transform;
+        spawnPoints.SetParent(parent);
 
         // Grab the prefab object from our Assets
         var groundPrefab = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Ground.prefab", typeof(GameObject));
