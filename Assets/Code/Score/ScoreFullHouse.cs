@@ -15,7 +15,7 @@ public class ScoreFullHouse : ScoreFunction
             else if (results[i] == 3) triplet = i + 1;
         }
 
-        if (triplet != 0 && pair != 0) score = triplet * 3 + pair * 2;
+        if (triplet != 0 && pair != 0) score = 30;
 
         scoreVisualizer.text = score.ToString();
 
