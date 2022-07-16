@@ -89,15 +89,16 @@ public class GunBehavior : MonoBehaviour
     void Shoot()
     {
         // Introduce gun specifics
+        Vector2 spawnPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 targetPosition = Input.mousePosition;
+
+        // Spread
         for(int i = 0; i < gunData.projectilesPerShot; i++)
         {
-            Vector2 spawnPosition = Camera.main.WorldToScreenPoint(transform.position);
-            Vector2 targetPosition = Input.mousePosition;
             Vector3 direction = (targetPosition - spawnPosition).normalized;
-
             direction = Quaternion.Euler(0.0f, 0.0f, Random.Range(-gunData.spread/2.0f, gunData.spread/2.0f)) * direction;
 
-            GameObject currentProjectile = Instantiate(projectile, transform.position, transform.rotation);
+            GameObject currentProjectile = Instantiate(projectile, muzzleFlash.transform.position, transform.rotation);
             currentProjectile.GetComponent<Projectile>().SetDirection(direction);
         }
 
