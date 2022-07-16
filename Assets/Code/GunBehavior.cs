@@ -6,6 +6,8 @@ public class GunBehavior : MonoBehaviour
 {
     private GunData gunData;
 
+    [SerializeField] private GameObject projectile;
+
     [SerializeField] private GunData pistolData;
     [SerializeField] private GunData shotgunData;
     [SerializeField] private GunData tommygunData;
@@ -85,6 +87,24 @@ public class GunBehavior : MonoBehaviour
 
     void Shoot()
     {
+        // Introduce gun specifics
+
+        switch (currGunIndex)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+        Vector2 spawnPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 targetPosition = Input.mousePosition;
+        Vector2 direction = (targetPosition - spawnPosition).normalized;
+
+        GameObject currentProjectile = Instantiate(projectile, transform.position, transform.rotation);
+        currentProjectile.GetComponent<Projectile>().SetDirection(direction);
+
         muzzleFlash.SetActive(true);
         StartCoroutine(Muzzle());
     }

@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615e02a44c3d1d74fa14a2b55b111554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 766981616762393106, guid: 85ded119bb8f2654c9224449a07f595f, type: 3}
   pistolData: {fileID: 11400000, guid: a653c373f96c3544984679a9a82023d4, type: 2}
   shotgunData: {fileID: 11400000, guid: 908b942277cca8242a4a0454e85c36ce, type: 2}
   tommygunData: {fileID: 11400000, guid: f9b2e9fa487bda743a9f92f76ae4d120, type: 2}
