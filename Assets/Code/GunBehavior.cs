@@ -89,22 +89,17 @@ public class GunBehavior : MonoBehaviour
     void Shoot()
     {
         // Introduce gun specifics
-
-        switch (currGunIndex)
+        for(int i = 0; i < gunData.projectilesPerShot; i++)
         {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-        }
-        Vector2 spawnPosition = Camera.main.WorldToScreenPoint(transform.position);
-        Vector2 targetPosition = Input.mousePosition;
-        Vector2 direction = (targetPosition - spawnPosition).normalized;
+            Vector2 spawnPosition = Camera.main.WorldToScreenPoint(transform.position);
+            Vector2 targetPosition = Input.mousePosition;
+            Vector3 direction = (targetPosition - spawnPosition).normalized;
 
-        GameObject currentProjectile = Instantiate(projectile, transform.position, transform.rotation);
-        currentProjectile.GetComponent<Projectile>().SetDirection(direction);
+            direction = Quaternion.Euler(0.0f, 0.0f, Random.Range(-gunData.spread/2.0f, gunData.spread/2.0f)) * direction;
+
+            GameObject currentProjectile = Instantiate(projectile, transform.position, transform.rotation);
+            currentProjectile.GetComponent<Projectile>().SetDirection(direction);
+        }
 
         muzzleFlash.SetActive(true);
         StartCoroutine(Muzzle());
@@ -115,7 +110,6 @@ public class GunBehavior : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         muzzleFlash.SetActive(false);
     }
-
 
     void SwitchGun(int gunIndex)
     {
