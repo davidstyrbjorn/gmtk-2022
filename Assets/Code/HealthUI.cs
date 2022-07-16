@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
-    Vector3 heartCardOrigin = new Vector3(0, 0, 0);
+    public Vector2 heartCardOrigin;
     public Sprite[] healthSprites = new Sprite[10];
 
     List<GameObject> healthCardObjects = new List<GameObject>();
@@ -13,24 +13,25 @@ public class HealthUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		for (int i = 0; i < healthSprites.Length; i++)
+        heartCardOrigin = new Vector2(-270, 210);
+
+        for (int i = 0; i < healthSprites.Length; i++)
 		{
             Canvas canvas = gameObject.GetComponent<Canvas>();
 
             GameObject imageObject = new GameObject("HealthCard_" + i);
 
             RectTransform trans = imageObject.AddComponent<RectTransform>();
-            trans.transform.SetParent(canvas.transform); // setting parent
+            trans.transform.SetParent(canvas.transform);
             trans.localScale = Vector3.one;
-            trans.anchoredPosition = new Vector2(0f, 0f); // setting position, will be on center
-            trans.sizeDelta = new Vector2(150, 200); // custom size
+            trans.anchoredPosition = heartCardOrigin;
+            trans.sizeDelta = new Vector2(75, 100);
 
             Image image = imageObject.AddComponent<Image>();
             image.sprite = healthSprites[i];
             imageObject.transform.SetParent(canvas.transform);
 
             imageObject.SetActive(false);
-
             healthCardObjects.Add(imageObject);
         }
     }
@@ -56,11 +57,12 @@ public class HealthUI : MonoBehaviour
         if (currentHP != hp)
         {
             currentHP = hp;
-            int showedCards = 3;
+            int showedCards = 4;
             for (int i = 0; i < healthCardObjects.Count; i++)
             {
+                int hpIndex = currentHP - 1;
                 GameObject healthCard = healthCardObjects[i];
-                if (i > currentHP || i < currentHP - showedCards)
+                if (i > hpIndex || i < hpIndex - showedCards)
 				{
                     healthCard.SetActive(false);
 				}
@@ -69,12 +71,12 @@ public class HealthUI : MonoBehaviour
                     healthCard.SetActive(true);
                     RectTransform rectTransform = healthCard.GetComponent<RectTransform>();
                     int slotIndex = (currentHP - i);
-                    int falloff = 7 * slotIndex * slotIndex;
-                    int offset = slotIndex * 50;
+                    int falloff = 5 * slotIndex * slotIndex;
+                    int offset = slotIndex * 40;
 
-                    Vector3 anchPosition = new Vector3(heartCardOrigin.x, heartCardOrigin.y, heartCardOrigin.z);
-                    anchPosition.x = -offset + falloff;
-                    if (i == currentHP)
+                    Vector2 anchPosition = new Vector2(heartCardOrigin.x, heartCardOrigin.y);
+                    anchPosition.x += -offset + falloff;
+                    if (i == hpIndex)
                         anchPosition.y -= 30;
 
                     rectTransform.anchoredPosition = anchPosition;
