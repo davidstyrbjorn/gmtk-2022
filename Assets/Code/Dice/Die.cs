@@ -25,7 +25,7 @@ public class Die : MonoBehaviour
         startScale = transform.localScale;
     }
 
-    private void FixedUpdate()
+	private void FixedUpdate()
     {
         if (!rb)
         {
@@ -78,6 +78,8 @@ public class Die : MonoBehaviour
         Outline outline = gameObject.GetComponent<Outline>();
         {
             outline.enabled = isLocked;
+            outline.OutlineColor = Color.red;
+            outline.OutlineWidth = 8;
         }
 
         if (isLocked)
@@ -91,7 +93,27 @@ public class Die : MonoBehaviour
         return isLocked;
     }
 
-    void OnMouseDown()
+	private void OnMouseOver()
+	{
+        if (!isLocked)
+        {
+            Outline outline = gameObject.GetComponent<Outline>();
+            outline.enabled = true;
+            outline.OutlineColor = Color.white;
+            outline.OutlineWidth = 4;
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (!isLocked)
+        {
+            Outline outline = gameObject.GetComponent<Outline>();
+            outline.enabled = false;
+        }
+    }
+
+	void OnMouseDown()
     {
         Rigidbody rigidBody = GetComponent<Rigidbody>();
         if (rigidBody != null)

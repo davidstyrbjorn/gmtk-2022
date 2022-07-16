@@ -17094,6 +17094,8 @@ MonoBehaviour:
   gameState: 1
   bg_barfight: {fileID: 20746809}
   bg_gamble: {fileID: 2034499770}
+  crosshairCursor: {fileID: 2800000, guid: f4fc2228d3457924db1036e8817064d3, type: 3}
+  normalCursor: {fileID: 2800000, guid: 75efe53b33b55cc4587d2236580fe8ad, type: 3}
   timesGambled: 0
   mapParent: {fileID: 168203906}
   enemyPrefab: {fileID: 7502274206300840073, guid: e7cf031dcdc2da84f95487c9edc9d6e0, type: 3}
