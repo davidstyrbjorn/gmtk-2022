@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
             }
 
             // Increase the rate of spawn over time
-            timeBetweenSpawns -= SPAWN_TIME_DECAY * Time.deltaTime;
-            timeBetweenSpawns = Mathf.Max(MIN_SPAWN_TIME, timeBetweenSpawns);
+            // timeBetweenSpawns -= SPAWN_TIME_DECAY * Time.deltaTime;
+            // timeBetweenSpawns = Mathf.Max(MIN_SPAWN_TIME, timeBetweenSpawns);
 
             if (Input.GetKeyDown(KeyCode.G))
             {
@@ -66,17 +66,12 @@ public class GameManager : MonoBehaviour
         var spawnPoints = new List<Transform>(spawnPointsParent.GetComponentsInChildren<Transform>());
         spawnPoints.RemoveAt(0);
 
-        int howMany = Random.Range(1, 3);
-        foreach (var _ in Enumerable.Range(1, howMany))
-        {
-            int index = Random.Range(0, spawnPoints.Count);
-            Vector2 spawnPoint = spawnPoints[index].position;
-            spawnPoints.RemoveAt(index);
+        int index = Random.Range(0, spawnPoints.Count);
+        Vector2 spawnPoint = spawnPoints[index].position;
 
-            // Instantiate enemy at that position
-            var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
-            enemy.transform.SetParent(mapParent);
-        }
+        // Instantiate enemy at that position
+        var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        enemy.transform.SetParent(mapParent);
     }
 
     public void OnBarFightOver()
