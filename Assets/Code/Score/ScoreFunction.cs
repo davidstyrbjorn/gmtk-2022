@@ -7,8 +7,6 @@ public abstract class ScoreFunction : MonoBehaviour
 {
     public TextMeshProUGUI scoreVisualizer;
     public bool isLocked;
-    protected int score;
-
-
+    public int score;
     public abstract int CountScore(int[] results);
 }

@@ -19,6 +19,7 @@ public class GunBehavior : MonoBehaviour
     private int gunInventorySize = 3;
 
     private SfxManager sfxManager;
+    private RewardsManager rewardsManager;
 
     float timeSinceLastShot;
     // Start is called before the first frame update
@@ -30,6 +31,7 @@ public class GunBehavior : MonoBehaviour
         spriteRenderer.sprite = gunData.gunSprite;
 
         sfxManager = FindObjectOfType<SfxManager>();
+        rewardsManager = FindObjectOfType<RewardsManager>();
 
         timeSinceLastShot = gunData.fireRate;
         currGunIndex = 0;
@@ -39,7 +41,7 @@ public class GunBehavior : MonoBehaviour
     void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        if (timeSinceLastShot >= (1.0f / gunData.fireRate))
+        if (timeSinceLastShot >= (1.0f / (gunData.fireRate * rewardsManager.GetReward(PassiveRewardTypes.FIRE_RATE))))
         {
             if (Input.GetButton("Fire1"))
             {
@@ -112,7 +114,7 @@ public class GunBehavior : MonoBehaviour
         ); // Camera shake
         muzzleFlash.SetActive(true); // Muzzle
         StartCoroutine(Muzzle());
-        sfxManager.PlaySound(gunData.name.ToLower(), 0.6f); // Play SFX
+        sfxManager.PlaySound(gunData.name.ToLower(), 0.3f); // Play SFX
     }
 
     IEnumerator Muzzle()
@@ -138,6 +140,9 @@ public class GunBehavior : MonoBehaviour
                 gunData = tommygunData;
                 break;
         }
+        // let fireRate = RewardsSystem.Get(Rewards::FireRate);
+        // -> 1 to 2
+        // gunData.fireRate *= fireRate
         spriteRenderer.sprite = gunData.gunSprite;
     }
 }

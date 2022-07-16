@@ -31,13 +31,16 @@ public class LockScore : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            scoreFunc.isLocked = true;
-            text.color = new Color(1, 0, 0);
-            gamblingManager.resetThrows();
-            diceManager.UnlockAllDice();
+            if (!scoreFunc.isLocked)
+            {
+                scoreFunc.isLocked = true;
+                text.color = new Color(1, 0, 0);
+                gamblingManager.resetThrows();
+                diceManager.UnlockAllDice();
 
-            FindObjectOfType<GameManager>().OnGamblingOver();
-            gamblingManager.ToggleGambling(false);
+                FindObjectOfType<GameManager>().OnGamblingOver();
+                gamblingManager.ToggleGambling(false);
+            }
         }
     }
 }
