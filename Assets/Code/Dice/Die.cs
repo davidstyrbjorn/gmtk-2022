@@ -83,9 +83,18 @@ public class Die : MonoBehaviour
         }
 
         if (isLocked)
+		{
             rb.constraints = RigidbodyConstraints.FreezeAll;
+            BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
+            boxCollider.isTrigger = true;
+        }
         else
+		{
             rb.constraints = RigidbodyConstraints.None;
+
+            BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
+            boxCollider.isTrigger = false;
+        }
     }
 
     public bool GetLocked()
