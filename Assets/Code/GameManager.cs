@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     public TMPro.TextMeshProUGUI countdownTimer;
     private PlayerController playerController;
     public GameObject pukePrefab;
+    public GameObject pauseScreen;
 
     void Start()
     {
@@ -195,11 +196,13 @@ public class GameManager : MonoBehaviour
         {
             FindObjectOfType<GunBehavior>().enabled = false;
             Time.timeScale = 0;
+            pauseScreen.SetActive(true);
         }
         else
         {
             FindObjectOfType<GunBehavior>().enabled = true;
             Time.timeScale = 1;
+            pauseScreen.SetActive(false);
         }
     }
 
