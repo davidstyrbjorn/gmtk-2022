@@ -1971,7 +1971,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lock a die by clicking it. \nRoll all unlocked dice by pressing \"SPACE\".\nIf
+  m_text: "Lock a die by clicking it. \nRoll all unlocked dice by pressing <color=blue>SPACE</color>.\nIf
     you are satisified with your roll of the dice, choose a line below to use or
     omit."
   m_isRightToLeft: 0
