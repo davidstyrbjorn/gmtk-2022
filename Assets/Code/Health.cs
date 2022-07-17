@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int hp;
-    public int invinsibilityTimer = 0;
+    public float invinsibilityTimer = 0;
     private bool isInvinsible = false;
 
     public void TakeDamage(int howMuch)
