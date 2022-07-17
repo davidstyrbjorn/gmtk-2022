@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     public TMPro.TextMeshProUGUI countdownTimer;
     private PlayerController playerController;
+    public GameObject pukePrefab;
 
     void Start()
     {
@@ -119,17 +120,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             ToggleMusic();
-        }
-        if (Input.GetKeyDown(KeyCode.Minus))
-        {
-            AudioListener.volume -= 0.1f;
-            AudioListener.volume = Mathf.Max(AudioListener.volume, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.Plus))
-        {
-            AudioListener.volume += 0.1f;
-            AudioListener.volume = Mathf.Min(AudioListener.volume, 1);
-
         }
 
         // string text = " Barfight number: " + (timesGambled + 1).ToString();
