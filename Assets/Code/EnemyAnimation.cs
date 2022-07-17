@@ -42,7 +42,7 @@ public class EnemyAnimation : MonoBehaviour
     IEnumerator Attack()
     {
         animator.SetBool("isAttacking", true);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.6f);
         animator.SetBool("isAttacking", false);
     }
 }
