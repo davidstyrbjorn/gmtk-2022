@@ -50,6 +50,12 @@ public class GunSelectUI : MonoBehaviour
             return;
         }
 
+
+        foreach (var card in cards)
+        {
+            card.color = Vector4.MoveTowards(card.color, new Color(1, 1, 1, 1), 2.0f * Time.deltaTime);
+        }
+
         // Enable disable cards dependent on if they're unlocked or not
         if (gamblingManager.completions >= 1)
         {

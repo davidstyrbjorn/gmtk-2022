@@ -16,6 +16,8 @@ public class Die : MonoBehaviour
     Vector3 startScale;
 
     float stuckTime = 0f;
+    float throwTime = 0f;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -35,20 +37,12 @@ public class Die : MonoBehaviour
         Vector3 force = new Vector3(0, 0, fallForce);
 
         rb.AddForce(force);
-
-        if (!IsMoving())
+        if (!HasValue())
 		{
-            stuckTime += Time.fixedDeltaTime;
-
-            if (stuckTime > 1f)
-            {
-                if (!HasValue())
-                    Throw();
+            if (Time.time - throwTime > 10f)
+			{
+                Throw();
             }
-        }
-        else
-		{
-            stuckTime = 0;
 		}
     }
 	private void OnCollisionStay(Collision collision)
@@ -62,6 +56,8 @@ public class Die : MonoBehaviour
 	public void Throw()
     {
         if (!rb) rb = GetComponent<Rigidbody>();
+
+        throwTime = Time.time;
 
         float dirX = Random.Range(0, 500);
         float dirY = Random.Range(0, 500);
