@@ -61,7 +61,7 @@ public class LockScore : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
 
     public void ResetColor()
     {
-        text.color = new Color(1, 1, 1);
+        text.color = new Color(1, 1, 1, 1);
     }
 
     // Some hover styles
