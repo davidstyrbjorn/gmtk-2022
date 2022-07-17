@@ -23,7 +23,6 @@ public class DiceManager : MonoBehaviour
             dice.Add(foundDice[i]);
             foundDice[i].Throw();
         }
-        gamblingManager.rollDice();
     }
 
     // Update is called once per frame
