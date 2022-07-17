@@ -24,7 +24,6 @@ public class GamblingManager : MonoBehaviour
 
     const int ONE_PAIR_MAX = 12;
 
-    private string[] categories = new string[] { "pair", "two_pairs", "three_of_a_kind", "four_of_a_kind", "straight", "yahtzee" };
     private Dictionary<string, bool> categoryFlag = new Dictionary<string, bool>();
 
     void Awake()
@@ -162,6 +161,26 @@ public class GamblingManager : MonoBehaviour
                 var ratio = FindObjectOfType<ScoreThrees>().GetMultiplierRatio();
                 print("GO THREE OF A KIND! " + ratio);
                 FindObjectOfType<PlayerMovement>().moveSpeed *= ratio;
+            }
+        }
+
+        if (!categoryFlag.GetValueOrDefault("full_house"))
+        {
+            if (FindObjectOfType<ScoreFullHouse>().score != 0)
+            {
+                categoryFlag.Add("full_house", true);
+                switch (completions)
+                {
+                    case 0:
+                        gunBehavior.pistolData.piercing++;
+                        break;
+                    case 1:
+                        gunBehavior.shotgunData.piercing++;
+                        break;
+                    case 2:
+                        gunBehavior.tommygunData.piercing++;
+                        break;
+                }
             }
         }
 

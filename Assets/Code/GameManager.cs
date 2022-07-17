@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     [SerializeField] public SpawnPoint[] spawnPoints;
     private float timeAtEnter;
-    private int barFightDuration = 3;
+    private int barFightDuration = 30;
     private float timeBetweenSpawns = 2.0f;
     private const float MIN_SPAWN_TIME = 1.0f;
     private const float SPAWN_TIME_DECAY = 0.005f;
@@ -76,6 +76,27 @@ public class GameManager : MonoBehaviour
         bg_gamble.Play();
         bg_barfight.loop = true;
         bg_gamble.loop = true;
+
+        // GUN INITIAL DATA
+        var gd = FindObjectOfType<GunBehavior>();
+        gd.pistolData.spread = 2;
+        gd.pistolData.fireRate = 2;
+        gd.pistolData.projectilesPerShot = 1;
+        gd.pistolData.cameraShakeIntensity = .05f;
+        gd.pistolData.cameraShakeDecayRate = .2f;
+        gd.pistolData.piercing = 1;
+        gd.shotgunData.spread = 23;
+        gd.shotgunData.fireRate = 1;
+        gd.shotgunData.projectilesPerShot = 5;
+        gd.shotgunData.cameraShakeIntensity = .075f;
+        gd.shotgunData.cameraShakeDecayRate = .1f;
+        gd.shotgunData.piercing = 1;
+        gd.tommygunData.spread = 10;
+        gd.tommygunData.fireRate = 7;
+        gd.tommygunData.projectilesPerShot = 1;
+        gd.tommygunData.cameraShakeIntensity = .025f;
+        gd.tommygunData.cameraShakeDecayRate = .3f;
+        gd.tommygunData.piercing = 1;
     }
 
     void Update()

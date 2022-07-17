@@ -14,4 +14,5 @@ public class GunData : ScriptableObject
 
     public float cameraShakeIntensity = 0.05f;
     public float cameraShakeDecayRate = 0.1f;
+    public int piercing = 1;
 }

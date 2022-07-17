@@ -32,7 +32,12 @@ public class ScoreFullHouse : ScoreFunction
 
     public override string GetTooltipText()
     {
-        return "No real benefit but the sweet relief";
+        var gun = "Nothing";
+        var completions = FindObjectOfType<GamblingManager>().completions;
+        if (completions == 0) gun = "Revolver";
+        if (completions == 1) gun = "Shotgun";
+        if (completions == 2) gun = "Tommygun";
+        return $"Gives your bullet piercing {gun}";
     }
 
     // Start is called before the first frame update

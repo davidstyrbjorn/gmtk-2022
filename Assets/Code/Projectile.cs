@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
     private Vector2 spawnPosition;
     private Vector2 targetPosition;
     private Vector3 velocity;
+    [System.NonSerialized]
+    public int piercing;
 
     [SerializeField] private float lifetime = 5.0f;
     [SerializeField] private float projectileSpeed = 10f;
@@ -46,15 +48,18 @@ public class Projectile : MonoBehaviour
             {
                 health.TakeDamage(1);
             }
-
-            // Remove this projectile
-            Destroy(gameObject);
+            // Do we die? Piercing value decides
+            piercing -= 1;
+            if (piercing <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
-    private void OnCollisionEnter2D (Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(!collision.collider.transform.CompareTag("Player") && 
+        if (!collision.collider.transform.CompareTag("Player") &&
             !collision.collider.transform.CompareTag("projectile") &&
             !collision.collider.transform.CompareTag("props"))
             Destroy(gameObject);

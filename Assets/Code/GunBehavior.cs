@@ -24,7 +24,7 @@ public class GunBehavior : MonoBehaviour
     private GamblingManager gamblingManager;
 
     float timeSinceLastShot;
-    // Start is called before the first frame update
+
     void Start()
     {
         gunData = pistolData;
@@ -123,6 +123,7 @@ public class GunBehavior : MonoBehaviour
 
             GameObject currentProjectile = Instantiate(projectile, muzzleFlash.transform.position, transform.rotation);
             currentProjectile.GetComponent<Projectile>().SetDirection(direction);
+            currentProjectile.GetComponent<Projectile>().piercing = gunData.piercing;
         }
 
         Camera.main.GetComponent<CameraShake>()
