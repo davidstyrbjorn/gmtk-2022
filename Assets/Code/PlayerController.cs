@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public PostProcessVolume pp;
 
+    private float damageTime = -100;
+
     [System.NonSerialized]
     public bool deathFlag = false;
 
@@ -33,11 +35,34 @@ public class PlayerController : MonoBehaviour
     {
         if (deathFlag) return;
 
-        if (lastFrameHealth != health.hp)
+        if (lastFrameHealth > health.hp)
         {
             // We have taken damage
             sfxManager.PlaySound("player_hurt", 0.65f);
             Camera.main.GetComponent<CameraShake>().DoShake(0.1f, 0.6f);
+
+            damageTime = Time.time;
+        }
+
+        float damageEffectSpeed = 2f;
+        float epsilon = 0.5f;
+        float t = Time.time - damageTime;
+        if (t < (1 / damageEffectSpeed) + epsilon)
+        {
+            List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
+            spriteRenderers.AddRange(GetComponentsInChildren<SpriteRenderer>());
+            spriteRenderers.Add(GetComponent<SpriteRenderer>());
+
+            for (int i = 0; i < spriteRenderers.Count; i++)
+            {
+                SpriteRenderer spriteRenderer = spriteRenderers[i];
+                float gAndB = Mathf.Lerp(0, 1, t);
+                float a = Mathf.Lerp(0.3f, 1, t);
+
+
+                Color newColor = new Color(1f, gAndB * damageEffectSpeed, gAndB * damageEffectSpeed, a * damageEffectSpeed);
+                spriteRenderer.color = newColor;
+            }
         }
 
         if (health.hp <= 0)
