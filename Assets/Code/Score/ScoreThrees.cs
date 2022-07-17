@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ScoreThrees : ScoreFunction
 {
+    const float THREES_MAX = 18;
+
+
     public override int CountScore(int[] results)
     {
         score = 0;
@@ -21,6 +24,16 @@ public class ScoreThrees : ScoreFunction
         GetComponent<TMPro.TextMeshProUGUI>().SetText(s);
 
         return score;
+    }
+
+    public override float GetMultiplierRatio()
+    {
+        return 1.0f + ((score / THREES_MAX) * 0.5f);
+    }
+
+    public override string GetTooltipText()
+    {
+        return $"Gain <color=green>+{Mathf.Round((GetMultiplierRatio() - 1.0f) * 100.0f)}%</color> movement speed increase";
     }
 
     // Start is called before the first frame update

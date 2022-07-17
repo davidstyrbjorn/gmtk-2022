@@ -21,6 +21,16 @@ public class ScoreOnePair : ScoreFunction
         return score;
     }
 
+    public override float GetMultiplierRatio()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override string GetTooltipText()
+    {
+        return "No real benefit but the sweet relief";
+    }
+
     // Start is called before the first frame update
     void Start()
     {

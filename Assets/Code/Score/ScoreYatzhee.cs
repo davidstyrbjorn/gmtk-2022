@@ -23,6 +23,16 @@ public class ScoreYatzhee : ScoreFunction
         return score;
     }
 
+    public override float GetMultiplierRatio()
+    {
+        return 1.0f;
+    }
+
+    public override string GetTooltipText()
+    {
+        return "<color=red>Destroy</color> all other gamblers";
+    }
+
     // Start is called before the first frame update
     void Start()
     {

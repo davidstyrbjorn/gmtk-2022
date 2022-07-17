@@ -28,9 +28,11 @@ public class LockScore : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
             text.color = new Color(1, 1, 1);
     }
 
-    public void ShowTooltip(ScoreFunction scoreFunction)
+    public void OnShowTooltip()
     {
-
+        // Set correct tooltip text
+        FindObjectOfType<GamblingManager>().tooltip.GetComponentInChildren<TextMeshProUGUI>()
+            .SetText(GetComponent<ScoreFunction>().GetTooltipText());
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -65,6 +67,7 @@ public class LockScore : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
         text.fontStyle = FontStyles.Underline;
         // showtooltip
         FindObjectOfType<GamblingManager>().tooltip.SetActive(true);
+        OnShowTooltip();
     }
 
     public void OnPointerExit(PointerEventData eventData)
