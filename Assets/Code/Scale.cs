@@ -20,6 +20,6 @@ public class Scale : MonoBehaviour
     public float GetEnemySpawnRateMultiplier()
     {
         const float MUTLIPLIER_PER_ROUND_PLAYED = 0.1f;
-        return 1.5f + MUTLIPLIER_PER_ROUND_PLAYED * gameManager.timesGambled;
+        return 1.2f + MUTLIPLIER_PER_ROUND_PLAYED * gameManager.timesGambled;
     }
 }

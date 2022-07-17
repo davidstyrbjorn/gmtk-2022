@@ -46,13 +46,13 @@ public class LockScore : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
             gamblingManager.resetThrows();
             FindObjectOfType<DiceManager>().UnlockAllDice();
 
+            gamblingManager.OnLock();
+
             //Is the sheet completed?
             if (gamblingManager.AttemptResetSheet())
             {
                 gamblingManager.ResetColors();
             }
-
-            gamblingManager.OnLock();
 
             FindObjectOfType<GameManager>().OnGamblingOver();
             gamblingManager.ToggleGambling(false);
