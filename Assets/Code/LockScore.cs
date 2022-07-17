@@ -52,6 +52,8 @@ public class LockScore : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
                 gamblingManager.ResetColors();
             }
 
+            gamblingManager.OnLock();
+
             FindObjectOfType<GameManager>().OnGamblingOver();
             gamblingManager.ToggleGambling(false);
         }
