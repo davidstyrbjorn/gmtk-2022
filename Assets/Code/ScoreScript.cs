@@ -8,12 +8,7 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<TextMeshProUGUI>().text = "Score: " + GamblingManager.getScore().ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        int score = GamblingManager.getScore();
+        GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
     }
 }
