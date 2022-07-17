@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +14,11 @@ public class PlayerController : MonoBehaviour
 
     public GameManager.SECTION currentSection;
     private Animator animator;
+
+    public PostProcessVolume pp;
+
+    [System.NonSerialized]
+    public bool deathFlag = false;
 
     void Start()
     {
@@ -24,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (deathFlag) return;
+
         if (lastFrameHealth != health.hp)
         {
             // We have taken damage
@@ -33,19 +42,22 @@ public class PlayerController : MonoBehaviour
 
         if (health.hp <= 0)
         {
+            deathFlag = true;
             // Game over!
-            // SceneManager.LoadScene("GameOverScene");
             animator.SetTrigger("died");
             FindObjectOfType<GameManager>().ToggleBarFight(false);
-            // Fade out all enemies
+            // Fade out all enemies, disable ALOT of stuff
             foreach (var enemy in FindObjectsOfType<Enemy>())
             {
                 enemy.GetComponent<SpriteRenderer>().color = Color.clear;
             }
             foreach (var lm in FindObjectsOfType<LookAtMouse>())
             {
-                lm.enabled = false;
+                lm.gameObject.SetActive(false);
             }
+            FindObjectOfType<CameraFollow>().enabled = true;
+            FindObjectOfType<Canvas>().enabled = false;
+            StartCoroutine(DeathRoutine());
         }
 
         lastFrameHealth = health.hp;
@@ -65,5 +77,23 @@ public class PlayerController : MonoBehaviour
         {
             currentSection = GameManager.SECTION.GAME;
         }
+    }
+
+    public IEnumerator DeathRoutine()
+    {
+        // Fade effect
+        const float FADE_SPEED = 0.1f;
+        if (pp.profile.TryGetSettings<Vignette>(out Vignette vig))
+        {
+            while (vig.intensity <= 1)
+            {
+                vig.intensity.Interp(vig.intensity, 2.5f, FADE_SPEED * Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene("GameOverScene");
     }
 }
