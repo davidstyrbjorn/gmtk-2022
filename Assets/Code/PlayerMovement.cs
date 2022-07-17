@@ -20,21 +20,23 @@ public class PlayerMovement : MonoBehaviour
         moveSpeedVector = new Vector2(moveSpeed, moveSpeed);
 
         animator = GetComponent<Animator>();
-        animator.speed = moveSpeed / 80f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.speed = moveSpeed / 80f;
+
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
         velocity = new Vector2(inputX, inputY);
         velocity = velocity.normalized * moveSpeedVector * rewardsManager.GetReward(PassiveRewardTypes.MOVE_SPEED);
 
-        if(velocity.magnitude > 0f)
+        if (velocity.magnitude > 0f)
         {
             animator.SetBool("isRunning", true);
-        } else if(animator.GetBool("isRunning"))
+        }
+        else if (animator.GetBool("isRunning"))
         {
             animator.SetBool("isRunning", false);
         }

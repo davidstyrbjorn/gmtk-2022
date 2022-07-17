@@ -15,11 +15,13 @@ public class GunBehavior : MonoBehaviour
     [SerializeField] private GameObject muzzleFlash;
 
     private SpriteRenderer spriteRenderer;
-    private int currGunIndex;
+    [System.NonSerialized]
+    public int currGunIndex;
     private int gunInventorySize = 3;
 
     private SfxManager sfxManager;
     private RewardsManager rewardsManager;
+    private GamblingManager gamblingManager;
 
     float timeSinceLastShot;
     // Start is called before the first frame update
@@ -32,6 +34,7 @@ public class GunBehavior : MonoBehaviour
 
         sfxManager = FindObjectOfType<SfxManager>();
         rewardsManager = FindObjectOfType<RewardsManager>();
+        gamblingManager = FindObjectOfType<GamblingManager>();
 
         timeSinceLastShot = gunData.fireRate;
         currGunIndex = 0;
@@ -48,6 +51,20 @@ public class GunBehavior : MonoBehaviour
                 Shoot();
                 timeSinceLastShot = 0.0f;
             }
+        }
+
+        // Modify inventory size according to completions
+        if (gamblingManager.completions == 0)
+        {
+            gunInventorySize = 1;
+        }
+        else if (gamblingManager.completions == 1)
+        {
+            gunInventorySize = 2;
+        }
+        else
+        {
+            gunInventorySize = 3;
         }
 
         // Weapon Switching: Numbers
@@ -125,6 +142,7 @@ public class GunBehavior : MonoBehaviour
 
     void SwitchGun(int gunIndex)
     {
+        // TODO Cant switch to shotgun or tommygun?
         switch (gunIndex)
         {
             default:
@@ -140,9 +158,6 @@ public class GunBehavior : MonoBehaviour
                 gunData = tommygunData;
                 break;
         }
-        // let fireRate = RewardsSystem.Get(Rewards::FireRate);
-        // -> 1 to 2
-        // gunData.fireRate *= fireRate
         spriteRenderer.sprite = gunData.gunSprite;
     }
 }

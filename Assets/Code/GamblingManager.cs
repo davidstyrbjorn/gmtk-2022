@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 
 public class GamblingManager : MonoBehaviour
 {
@@ -163,11 +163,11 @@ public class GamblingManager : MonoBehaviour
         // Threshold for playing gambling success/fail sfx?
         if (totalScore >= 15)
         {
-            FindObjectOfType<SfxManager>().PlaySound("gamble_success");
+            FindObjectOfType<SfxManager>().PlaySound("gamble_success", 0.5f);
         }
         if (totalScore == 0)
         {
-            FindObjectOfType<SfxManager>().PlaySound("gamble_fail");
+            FindObjectOfType<SfxManager>().PlaySound("gamble_fail", 0.5f);
         }
     }
 

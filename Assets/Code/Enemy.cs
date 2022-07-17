@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
             GetComponent<Chasing>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<EnemyAnimation>().StartDie();
+            GetComponent<Collider2D>().enabled = false;
         }
 
         lastFrameHealth = health.hp;

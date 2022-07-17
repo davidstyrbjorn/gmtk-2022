@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     [SerializeField] public SpawnPoint[] spawnPoints;
     private float timeAtEnter;
-    public int barFightDuration = 10;
+    private int barFightDuration = 5;
     private float timeBetweenSpawns = 2.0f;
     private const float MIN_SPAWN_TIME = 1.0f;
     private const float SPAWN_TIME_DECAY = 0.005f;
@@ -172,6 +172,7 @@ public class GameManager : MonoBehaviour
         }
         // TODO: Maybe these should also be lists?
         playerMovement.enabled = value;
+        playerMovement.gameObject.GetComponentInChildren<Light>().enabled = value;
         gunBehavior.enabled = value;
         lookAtMouse.enabled = value;
         cameraFollow.enabled = value;
