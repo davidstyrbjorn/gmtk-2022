@@ -17,6 +17,7 @@ public class GamblingManager : MonoBehaviour
     private int throws = 0;
 
     public int completions = 0;
+    private static int totalScore = 0;
     public GameObject scoreCategories;
     public GameObject canvasScoreboard;
     private GunBehavior gunBehavior;
@@ -30,6 +31,9 @@ public class GamblingManager : MonoBehaviour
     {
         gunBehavior = FindObjectOfType<GunBehavior>();
     }
+
+    public int getScore() { return totalScore; }
+    public void addTotalScore(int toAdd) { totalScore += toAdd; }
 
     public void resetThrows()
     {

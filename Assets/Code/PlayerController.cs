@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
         if (health.hp <= 0)
         {
             // Game over!
-            Destroy(gameObject);
+            SceneManager.LoadScene("GameOverScene");
         }
 
         lastFrameHealth = health.hp;
