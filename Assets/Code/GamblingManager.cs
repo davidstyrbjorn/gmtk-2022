@@ -20,6 +20,7 @@ public class GamblingManager : MonoBehaviour
 
     public int completions = 0;
     private static int totalScore = 0;
+    private static int highScore = 0;
     public GameObject scoreCategories;
     public GameObject canvasScoreboard;
     private GunBehavior gunBehavior;
@@ -35,7 +36,9 @@ public class GamblingManager : MonoBehaviour
     }
 
     public static int getScore() { return totalScore; }
+    public static int getHighScore() { return highScore; }
     public static void resetScore() { totalScore = 0; }
+    public static void setHighScore(int newHighScore) { highScore = newHighScore; }
     public void addTotalScore(int toAdd) { totalScore += toAdd; }
 
     public void resetThrows()
