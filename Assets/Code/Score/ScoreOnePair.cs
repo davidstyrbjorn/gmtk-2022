@@ -28,7 +28,11 @@ public class ScoreOnePair : ScoreFunction
 
     public override string GetTooltipText()
     {
-        return "No real benefit but the sweet relief";
+        if (score == 0)
+        {
+            return "Omit line. No Pairs";
+        }
+        return "<color=green>Heal</color> for one";
     }
 
     // Start is called before the first frame update

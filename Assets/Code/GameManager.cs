@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public GAME_STATE gameState = GAME_STATE.BAR_FIGHT;
     public AudioSource bg_barfight;
     public AudioSource bg_gamble;
+    public AudioSource bg_sad;
     [SerializeField] private Texture2D crosshairCursor;
     [SerializeField] private Texture2D normalCursor;
 
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
     private float timeSinceLastSpawn = 0.0f;
     private Scale scale;
 
-    private const float BG_CROSSFADE_SPEED = 0.5f;
+    private const float BG_CROSSFADE_SPEED = 0.35f;
     public float backgroundMusicVolume = 0.35f;
 
     public TMPro.TextMeshProUGUI countdownTimer;
@@ -101,6 +102,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        // Fade out normal BG and do sad BG
+        if (playerController.deathFlag)
+        {
+            bg_barfight.volume = Mathf.MoveTowards(bg_barfight.volume, 0.0f, BG_CROSSFADE_SPEED * Time.deltaTime);
+            bg_gamble.volume = Mathf.MoveTowards(bg_gamble.volume, backgroundMusicVolume, BG_CROSSFADE_SPEED * Time.deltaTime);
+        }
+
+        if (playerController.deathFlag) return;
+
         string text = " Barfight number: " + (timesGambled + 1).ToString();
         text += "\n EnemySpawnRateMultiplier: " + scale.GetEnemySpawnRateMultiplier();
         text += "\n EnemyMoveSpeedMultiplier: " + scale.GetEnemyMovementMultiplier();

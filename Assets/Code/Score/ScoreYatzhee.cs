@@ -30,6 +30,10 @@ public class ScoreYatzhee : ScoreFunction
 
     public override string GetTooltipText()
     {
+        if (score == 0)
+        {
+            return "Omit Line. No Yahtzee";
+        }
         return "<color=red>Destroy</color> all other gamblers";
     }
 

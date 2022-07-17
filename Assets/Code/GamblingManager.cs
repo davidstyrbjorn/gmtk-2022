@@ -140,6 +140,19 @@ public class GamblingManager : MonoBehaviour
             }
         }
 
+        if (!categoryFlag.GetValueOrDefault("pair"))
+        {
+            if (FindObjectOfType<ScoreOnePair>().score != 0 && FindObjectOfType<ScoreOnePair>().isLocked)
+            {
+                categoryFlag.Add("pair", true);
+                if (FindObjectOfType<PlayerController>().TryGetComponent<Health>(out Health hp))
+                {
+                    hp.hp++;
+                    hp.hp = Mathf.Min(hp.hp, 10);
+                }
+            }
+        }
+
         // Straight heals to max
         if (!categoryFlag.GetValueOrDefault("straight"))
         {
