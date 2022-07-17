@@ -1044,6 +1044,7 @@ GameObject:
   - component: {fileID: 46145932}
   - component: {fileID: 46145931}
   - component: {fileID: 46145930}
+  - component: {fileID: 46145934}
   m_Layer: 0
   m_Name: stool
   m_TagString: props
@@ -1141,13 +1142,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46145929}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.0199995, y: 25.650002, z: 0}
+  m_LocalPosition: {x: -14.0199995, y: 23.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 672957102}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &46145934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46145929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &56394782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,7 +1625,7 @@ MonoBehaviour:
   timesGambled: 0
   mapParent: {fileID: 251969671}
   enemyPrefab: {fileID: 7502274206300840073, guid: e7cf031dcdc2da84f95487c9edc9d6e0, type: 3}
-  spawnPointsParent: {fileID: 1772809238}
+  spawnPoints: []
   barFightDuration: 10
   backgroundMusicVolume: 0.5
   countdownTimer: {fileID: 791698902}
@@ -3492,6 +3509,7 @@ GameObject:
   - component: {fileID: 100422536}
   - component: {fileID: 100422535}
   - component: {fileID: 100422534}
+  - component: {fileID: 100422537}
   m_Layer: 0
   m_Name: kitchencountersink (6)
   m_TagString: Untagged
@@ -3606,6 +3624,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &100422537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100422532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &104376669
 GameObject:
   m_ObjectHideFlags: 0
@@ -4632,6 +4666,7 @@ GameObject:
   - component: {fileID: 130464147}
   - component: {fileID: 130464146}
   - component: {fileID: 130464145}
+  - component: {fileID: 130464149}
   m_Layer: 0
   m_Name: chair
   m_TagString: props
@@ -4736,37 +4771,22 @@ Transform:
   m_Father: {fileID: 672957102}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &133488011
-GameObject:
+--- !u!114 &130464149
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 133488012}
-  m_Layer: 0
-  m_Name: spawn0 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &133488012
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133488011}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59.2, y: 105.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1772809238}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 130464144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &136888602
 GameObject:
   m_ObjectHideFlags: 0
@@ -6208,6 +6228,7 @@ GameObject:
   - component: {fileID: 175702418}
   - component: {fileID: 175702417}
   - component: {fileID: 175702416}
+  - component: {fileID: 175702420}
   m_Layer: 0
   m_Name: chair
   m_TagString: props
@@ -6312,6 +6333,22 @@ Transform:
   m_Father: {fileID: 672957102}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &175702420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175702415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &179964523
 GameObject:
   m_ObjectHideFlags: 0
@@ -7223,6 +7260,7 @@ GameObject:
   - component: {fileID: 201252692}
   - component: {fileID: 201252691}
   - component: {fileID: 201252690}
+  - component: {fileID: 201252694}
   m_Layer: 0
   m_Name: table1
   m_TagString: props
@@ -7327,6 +7365,22 @@ Transform:
   m_Father: {fileID: 672957102}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &201252694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201252689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &204001696
 GameObject:
   m_ObjectHideFlags: 0
@@ -9142,6 +9196,7 @@ GameObject:
   - component: {fileID: 248272190}
   - component: {fileID: 248272192}
   - component: {fileID: 248272191}
+  - component: {fileID: 248272193}
   m_Layer: 0
   m_Name: roulettetable (1)
   m_TagString: props
@@ -9256,6 +9311,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.4, y: 3.2666314}
   m_EdgeRadius: 0
+--- !u!114 &248272193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248272188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &251969670
 GameObject:
   m_ObjectHideFlags: 0
@@ -9285,7 +9356,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1809232743}
-  - {fileID: 1772809238}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12595,6 +12665,7 @@ GameObject:
   - component: {fileID: 331994151}
   - component: {fileID: 331994150}
   - component: {fileID: 331994149}
+  - component: {fileID: 331994152}
   m_Layer: 0
   m_Name: kitchencountersink (7)
   m_TagString: Untagged
@@ -12709,6 +12780,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &331994152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331994147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &332438052
 GameObject:
   m_ObjectHideFlags: 0
@@ -14229,6 +14316,7 @@ GameObject:
   - component: {fileID: 383314397}
   - component: {fileID: 383314396}
   - component: {fileID: 383314395}
+  - component: {fileID: 383314398}
   m_Layer: 0
   m_Name: pooltable (1)
   m_TagString: props
@@ -14343,6 +14431,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &383314398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383314393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &397365589
 GameObject:
   m_ObjectHideFlags: 0
@@ -18708,6 +18812,7 @@ GameObject:
   - component: {fileID: 540162125}
   - component: {fileID: 540162124}
   - component: {fileID: 540162123}
+  - component: {fileID: 540162127}
   m_Layer: 0
   m_Name: table1 (9)
   m_TagString: props
@@ -18812,6 +18917,22 @@ Transform:
   m_Father: {fileID: 672957102}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &540162127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540162122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &556985916
 GameObject:
   m_ObjectHideFlags: 0
@@ -21181,6 +21302,7 @@ GameObject:
   - component: {fileID: 622652495}
   - component: {fileID: 622652494}
   - component: {fileID: 622652497}
+  - component: {fileID: 622652498}
   m_Layer: 0
   m_Name: kitchencountersink
   m_TagString: Untagged
@@ -21295,6 +21417,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updatePerFrame: 1
   zOffset: 0
+--- !u!114 &622652498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622652493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &624137414
 GameObject:
   m_ObjectHideFlags: 0
@@ -22535,7 +22673,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659627278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.609562, y: 29.339996, z: 0}
+  m_LocalPosition: {x: -22.609562, y: 28.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24223,6 +24361,7 @@ GameObject:
   - component: {fileID: 726652548}
   - component: {fileID: 726652547}
   - component: {fileID: 726652550}
+  - component: {fileID: 726652551}
   m_Layer: 0
   m_Name: kitchencountersink (2)
   m_TagString: Untagged
@@ -24337,6 +24476,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updatePerFrame: 1
   zOffset: 0
+--- !u!114 &726652551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726652546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!4 &727607489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3231356055315601693, guid: d18c7b863095e5a44ab461ac00bf0fcd, type: 3}
@@ -26259,6 +26414,7 @@ GameObject:
   - component: {fileID: 780672025}
   - component: {fileID: 780672024}
   - component: {fileID: 780672023}
+  - component: {fileID: 780672026}
   m_Layer: 0
   m_Name: barrel1
   m_TagString: Untagged
@@ -26349,6 +26505,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &780672026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780672022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &781228721
 GameObject:
   m_ObjectHideFlags: 0
@@ -26893,6 +27065,7 @@ GameObject:
   - component: {fileID: 788369824}
   - component: {fileID: 788369823}
   - component: {fileID: 788369822}
+  - component: {fileID: 788369825}
   m_Layer: 0
   m_Name: table2 (6)
   m_TagString: props
@@ -27007,6 +27180,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &788369825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788369820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &791698900
 GameObject:
   m_ObjectHideFlags: 0
@@ -31281,6 +31470,7 @@ GameObject:
   - component: {fileID: 935795657}
   - component: {fileID: 935795659}
   - component: {fileID: 935795660}
+  - component: {fileID: 935795661}
   m_Layer: 0
   m_Name: bar_table
   m_TagString: Untagged
@@ -31348,7 +31538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935795656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.06, y: 29.379997, z: 0}
+  m_LocalPosition: {x: -15.84, y: 27.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -31386,7 +31576,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 8}
+    oldSize: {x: 16, y: 12}
     newSize: {x: 16, y: 8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -31395,6 +31585,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 15.084, y: 5.0418787}
   m_EdgeRadius: 0
+--- !u!114 &935795661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935795656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &936756109
 GameObject:
   m_ObjectHideFlags: 0
@@ -35926,37 +36132,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056832819}
   m_CullTransparentMesh: 1
---- !u!1 &1059439803
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1059439804}
-  m_Layer: 0
-  m_Name: spawn0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1059439804
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059439803}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.2, y: 75.200005, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1772809238}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1060430345
 GameObject:
   m_ObjectHideFlags: 0
@@ -38062,6 +38237,7 @@ GameObject:
   - component: {fileID: 1127605051}
   - component: {fileID: 1127605050}
   - component: {fileID: 1127605049}
+  - component: {fileID: 1127605053}
   m_Layer: 0
   m_Name: stool
   m_TagString: props
@@ -38159,13 +38335,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127605048}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.49, y: 25.559998, z: 0}
+  m_LocalPosition: {x: -20.49, y: 23.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 672957102}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1127605053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127605048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1140769844
 GameObject:
   m_ObjectHideFlags: 0
@@ -38407,6 +38599,7 @@ GameObject:
   - component: {fileID: 1146497837}
   - component: {fileID: 1146497836}
   - component: {fileID: 1146497835}
+  - component: {fileID: 1146497839}
   m_Layer: 0
   m_Name: chair
   m_TagString: props
@@ -38511,6 +38704,22 @@ Transform:
   m_Father: {fileID: 672957102}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1146497839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146497834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1155185845
 GameObject:
   m_ObjectHideFlags: 0
@@ -38523,6 +38732,7 @@ GameObject:
   - component: {fileID: 1155185849}
   - component: {fileID: 1155185848}
   - component: {fileID: 1155185847}
+  - component: {fileID: 1155185850}
   m_Layer: 0
   m_Name: table1 (6)
   m_TagString: props
@@ -38634,6 +38844,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1155185850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155185845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1161006499
 GameObject:
   m_ObjectHideFlags: 0
@@ -40411,6 +40637,7 @@ GameObject:
   - component: {fileID: 1224630275}
   - component: {fileID: 1224630274}
   - component: {fileID: 1224630277}
+  - component: {fileID: 1224630278}
   m_Layer: 0
   m_Name: kitchencountersink (1)
   m_TagString: Untagged
@@ -40525,6 +40752,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updatePerFrame: 1
   zOffset: 0
+--- !u!114 &1224630278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224630273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1228858424
 GameObject:
   m_ObjectHideFlags: 0
@@ -41727,6 +41970,7 @@ GameObject:
   - component: {fileID: 1266872882}
   - component: {fileID: 1266872881}
   - component: {fileID: 1266872884}
+  - component: {fileID: 1266872885}
   m_Layer: 0
   m_Name: barrel1 (1)
   m_TagString: Untagged
@@ -41831,6 +42075,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updatePerFrame: 1
   zOffset: 0
+--- !u!114 &1266872885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266872880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1269183386
 GameObject:
   m_ObjectHideFlags: 0
@@ -42230,6 +42490,7 @@ GameObject:
   - component: {fileID: 1280476117}
   - component: {fileID: 1280476119}
   - component: {fileID: 1280476118}
+  - component: {fileID: 1280476120}
   m_Layer: 0
   m_Name: roulettetable
   m_TagString: props
@@ -42344,6 +42605,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.4, y: 3.360631}
   m_EdgeRadius: 0
+--- !u!114 &1280476120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280476115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1283681158
 GameObject:
   m_ObjectHideFlags: 0
@@ -42995,37 +43272,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1289037552
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1289037553}
-  m_Layer: 0
-  m_Name: spawn0 (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1289037553
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1289037552}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 84.8, y: 75.200005, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1772809238}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1294119278
 GameObject:
   m_ObjectHideFlags: 0
@@ -43761,6 +44007,7 @@ GameObject:
   - component: {fileID: 1318991886}
   - component: {fileID: 1318991885}
   - component: {fileID: 1318991884}
+  - component: {fileID: 1318991888}
   m_Layer: 0
   m_Name: stool (1)
   m_TagString: props
@@ -43858,13 +44105,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318991883}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11, y: 25.260002, z: 0}
+  m_LocalPosition: {x: -11, y: 23.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 672957102}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1318991888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318991883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1319381668
 GameObject:
   m_ObjectHideFlags: 0
@@ -43977,6 +44240,7 @@ GameObject:
   - component: {fileID: 1323679230}
   - component: {fileID: 1323679233}
   - component: {fileID: 1323679232}
+  - component: {fileID: 1323679234}
   m_Layer: 0
   m_Name: table2 (5)
   m_TagString: props
@@ -44065,6 +44329,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1323679234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323679229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1325853303
 GameObject:
   m_ObjectHideFlags: 0
@@ -44885,6 +45165,7 @@ GameObject:
   - component: {fileID: 1341898033}
   - component: {fileID: 1341898032}
   - component: {fileID: 1341898031}
+  - component: {fileID: 1341898034}
   m_Layer: 0
   m_Name: chair (1)
   m_TagString: props
@@ -44989,6 +45270,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1341898034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341898029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1343603923
 GameObject:
   m_ObjectHideFlags: 0
@@ -45186,6 +45483,7 @@ GameObject:
   - component: {fileID: 1353016296}
   - component: {fileID: 1353016295}
   - component: {fileID: 1353016294}
+  - component: {fileID: 1353016298}
   m_Layer: 0
   m_Name: chair
   m_TagString: props
@@ -45290,6 +45588,22 @@ Transform:
   m_Father: {fileID: 672957102}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1353016298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353016293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1355345070
 GameObject:
   m_ObjectHideFlags: 0
@@ -46736,6 +47050,7 @@ GameObject:
   - component: {fileID: 1398094657}
   - component: {fileID: 1398094660}
   - component: {fileID: 1398094659}
+  - component: {fileID: 1398094661}
   m_Layer: 0
   m_Name: pooltable
   m_TagString: props
@@ -46850,6 +47165,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.4, y: 3.6227963}
   m_EdgeRadius: 0
+--- !u!114 &1398094661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398094656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1404927139
 GameObject:
   m_ObjectHideFlags: 0
@@ -49253,6 +49584,7 @@ GameObject:
   - component: {fileID: 1457187260}
   - component: {fileID: 1457187259}
   - component: {fileID: 1457187258}
+  - component: {fileID: 1457187262}
   m_Layer: 0
   m_Name: stool
   m_TagString: props
@@ -49350,13 +49682,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457187257}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.27, y: 25.470001, z: 0}
+  m_LocalPosition: {x: -17.27, y: 23.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 672957102}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1457187262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457187257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1474791090
 GameObject:
   m_ObjectHideFlags: 0
@@ -49618,6 +49966,7 @@ GameObject:
   - component: {fileID: 1482316757}
   - component: {fileID: 1482316756}
   - component: {fileID: 1482316755}
+  - component: {fileID: 1482316758}
   m_Layer: 0
   m_Name: kitchencountersink (4)
   m_TagString: Untagged
@@ -49732,6 +50081,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1482316758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482316753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1485799192
 GameObject:
   m_ObjectHideFlags: 0
@@ -51240,6 +51605,7 @@ GameObject:
   - component: {fileID: 1539017426}
   - component: {fileID: 1539017425}
   - component: {fileID: 1539017424}
+  - component: {fileID: 1539017427}
   m_Layer: 0
   m_Name: Wall(Clone) (49)
   m_TagString: Untagged
@@ -51356,6 +51722,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1539017427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539017422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1544849579
 GameObject:
   m_ObjectHideFlags: 0
@@ -52311,6 +52693,7 @@ GameObject:
   - component: {fileID: 1575490807}
   - component: {fileID: 1575490806}
   - component: {fileID: 1575490805}
+  - component: {fileID: 1575490808}
   m_Layer: 0
   m_Name: kitchencountersink (5)
   m_TagString: Untagged
@@ -52425,6 +52808,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1575490808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575490803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1578190426
 GameObject:
   m_ObjectHideFlags: 0
@@ -54814,6 +55213,7 @@ GameObject:
   - component: {fileID: 1647214194}
   - component: {fileID: 1647214193}
   - component: {fileID: 1647214192}
+  - component: {fileID: 1647214196}
   m_Layer: 0
   m_Name: table1 (5)
   m_TagString: props
@@ -54918,6 +55318,22 @@ Transform:
   m_Father: {fileID: 672957102}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1647214196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647214191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1650814569
 GameObject:
   m_ObjectHideFlags: 0
@@ -55174,6 +55590,7 @@ GameObject:
   - component: {fileID: 1658536302}
   - component: {fileID: 1658536301}
   - component: {fileID: 1658536300}
+  - component: {fileID: 1658536304}
   m_Layer: 0
   m_Name: chair
   m_TagString: props
@@ -55278,6 +55695,22 @@ Transform:
   m_Father: {fileID: 672957102}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1658536304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658536299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1659351967
 GameObject:
   m_ObjectHideFlags: 0
@@ -56745,6 +57178,7 @@ GameObject:
   - component: {fileID: 1739118400}
   - component: {fileID: 1739118399}
   - component: {fileID: 1739118398}
+  - component: {fileID: 1739118402}
   m_Layer: 0
   m_Name: chair
   m_TagString: props
@@ -56849,6 +57283,22 @@ Transform:
   m_Father: {fileID: 672957102}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1739118402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739118397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1747754642
 GameObject:
   m_ObjectHideFlags: 0
@@ -57967,40 +58417,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1772809237
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1772809238}
-  m_Layer: 0
-  m_Name: spawn_points
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1772809238
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772809237}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1059439804}
-  - {fileID: 133488012}
-  - {fileID: 1289037553}
-  m_Father: {fileID: 251969671}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1774995897
 GameObject:
   m_ObjectHideFlags: 0
@@ -62024,6 +62440,7 @@ GameObject:
   - component: {fileID: 1851827069}
   - component: {fileID: 1851827068}
   - component: {fileID: 1851827067}
+  - component: {fileID: 1851827071}
   m_Layer: 0
   m_Name: table1 (7)
   m_TagString: props
@@ -62128,6 +62545,22 @@ Transform:
   m_Father: {fileID: 672957102}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1851827071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851827066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1859336169
 GameObject:
   m_ObjectHideFlags: 0
@@ -65963,6 +66396,7 @@ GameObject:
   - component: {fileID: 1969598360}
   - component: {fileID: 1969598359}
   - component: {fileID: 1969598358}
+  - component: {fileID: 1969598361}
   m_Layer: 0
   m_Name: table1 (7)
   m_TagString: props
@@ -66070,6 +66504,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1969598361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969598356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1970967956
 GameObject:
   m_ObjectHideFlags: 0
@@ -66648,6 +67098,7 @@ GameObject:
   - component: {fileID: 1978423209}
   - component: {fileID: 1978423208}
   - component: {fileID: 1978423207}
+  - component: {fileID: 1978423210}
   m_Layer: 0
   m_Name: table2 (4)
   m_TagString: props
@@ -66762,6 +67213,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1978423210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978423205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1979232488
 GameObject:
   m_ObjectHideFlags: 0
@@ -70687,6 +71154,7 @@ GameObject:
   - component: {fileID: 2065014722}
   - component: {fileID: 2065014721}
   - component: {fileID: 2065014720}
+  - component: {fileID: 2065014723}
   m_Layer: 0
   m_Name: chair (2)
   m_TagString: props
@@ -70791,6 +71259,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2065014723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065014718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &2073991022
 GameObject:
   m_ObjectHideFlags: 0
