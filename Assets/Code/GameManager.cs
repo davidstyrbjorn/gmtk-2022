@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
         timeAtEnter = Time.timeSinceLevelLoad;
     }
 
-    private void ToggleBarFight(bool value)
+    public void ToggleBarFight(bool value)
     {
         var enemies = FindObjectsOfType<Enemy>();
         var hps = FindObjectsOfType<Health>();
