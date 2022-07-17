@@ -406,6 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f71c8bf754cdc48a5d7b997b5bc4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSection: 0
 --- !u!95 &2827022689835144704
 Animator:
   serializedVersion: 4
@@ -498,7 +499,7 @@ GameObject:
   - component: {fileID: 2870788401731525426}
   - component: {fileID: 242385355448526297}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,7 +513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6278392420499858893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.24, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -560,8 +561,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 25
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.5615011, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b230a17bda05e6848a97faf1ab76bfaa, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
