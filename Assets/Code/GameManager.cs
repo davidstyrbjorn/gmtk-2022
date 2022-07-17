@@ -116,6 +116,21 @@ public class GameManager : MonoBehaviour
         {
             TogglePause();
         }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ToggleMusic();
+        }
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            AudioListener.volume -= 0.1f;
+            AudioListener.volume = Mathf.Max(AudioListener.volume, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.Plus))
+        {
+            AudioListener.volume += 0.1f;
+            AudioListener.volume = Mathf.Min(AudioListener.volume, 1);
+
+        }
 
         // string text = " Barfight number: " + (timesGambled + 1).ToString();
         // text += "\n EnemySpawnRateMultiplier: " + scale.GetEnemySpawnRateMultiplier();
@@ -196,6 +211,19 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<GunBehavior>().enabled = true;
             Time.timeScale = 1;
         }
+    }
+
+    public void ToggleMusic()
+    {
+        if (AudioListener.volume > 0)
+        {
+            AudioListener.volume = 0;
+        }
+        else
+        {
+            AudioListener.volume = 1;
+        }
+
     }
 
     public void OnGamblingOver()

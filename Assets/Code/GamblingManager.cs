@@ -50,6 +50,7 @@ public class GamblingManager : MonoBehaviour
 
     public void rollDice()
     {
+        if (!diceManager.AllDiceSettled()) return;
         if (throws >= 3)
         {
             noThrowsAlert.SetActive(true);
