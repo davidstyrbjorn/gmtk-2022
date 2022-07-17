@@ -21800,7 +21800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: bb493182f1481f546a89da9e1fbca7e0, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 43a71835967b6ef4088ea05a3ad7b5af, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -32337,7 +32337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &979612406
 RectTransform:
   m_ObjectHideFlags: 0

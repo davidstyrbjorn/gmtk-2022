@@ -16,6 +16,8 @@ public class GamblingManager : MonoBehaviour
     [SerializeField]
     private int throws = 0;
 
+    [SerializeField] GameObject noThrowsAlert;
+
     public int completions = 0;
     private static int totalScore = 0;
     public GameObject scoreCategories;
@@ -29,6 +31,7 @@ public class GamblingManager : MonoBehaviour
     void Awake()
     {
         gunBehavior = FindObjectOfType<GunBehavior>();
+        noThrowsAlert.SetActive(false);
     }
 
     public int getScore() { return totalScore; }
@@ -39,9 +42,20 @@ public class GamblingManager : MonoBehaviour
         throws = 0;
     }
 
+    IEnumerator AlertTimer()
+    {
+        yield return new WaitForSeconds(1.0f);
+        noThrowsAlert.SetActive(false);
+    }
+
     public void rollDice()
     {
-        if (throws >= 3) return;
+        if (throws >= 3)
+        {
+            noThrowsAlert.SetActive(true);
+            StartCoroutine(AlertTimer());
+            return;
+        }
         needsUpdate = true;
         diceManager.Throw();
         throws++;
