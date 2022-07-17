@@ -83,19 +83,19 @@ public class GameManager : MonoBehaviour
         gd.pistolData.spread = 2;
         gd.pistolData.fireRate = 2;
         gd.pistolData.projectilesPerShot = 1;
-        gd.pistolData.cameraShakeIntensity = .05f;
+        gd.pistolData.cameraShakeIntensity = .03f;
         gd.pistolData.cameraShakeDecayRate = .2f;
         gd.pistolData.piercing = 1;
         gd.shotgunData.spread = 23;
         gd.shotgunData.fireRate = 1;
         gd.shotgunData.projectilesPerShot = 5;
-        gd.shotgunData.cameraShakeIntensity = .075f;
+        gd.shotgunData.cameraShakeIntensity = .04f;
         gd.shotgunData.cameraShakeDecayRate = .1f;
         gd.shotgunData.piercing = 1;
         gd.tommygunData.spread = 10;
         gd.tommygunData.fireRate = 7;
         gd.tommygunData.projectilesPerShot = 1;
-        gd.tommygunData.cameraShakeIntensity = .025f;
+        gd.tommygunData.cameraShakeIntensity = .02f;
         gd.tommygunData.cameraShakeDecayRate = .3f;
         gd.tommygunData.piercing = 1;
     }
@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
 
             // Countdown UI
             int time = barFightDuration - Mathf.RoundToInt(timeSpentFighting);
-            countdownTimer.SetText("NEED TO GAMBLE: " + time);
+            countdownTimer.SetText(time.ToString());
 
             // Transition volume
             bg_barfight.volume = Mathf.MoveTowards(bg_barfight.volume, backgroundMusicVolume, BG_CROSSFADE_SPEED * Time.deltaTime);
