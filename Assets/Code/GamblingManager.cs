@@ -79,6 +79,20 @@ public class GamblingManager : MonoBehaviour
         // We do this flag type of deal to increase the amount of sunlight my body gets before
         // i burn up and this code melts into nothing but atoms 
 
+        // Threshold for playing gambling success/fail sfx?
+        if (totalScore >= 15)
+        {
+            FindObjectOfType<SfxManager>().PlaySound("gamble_success", 0.5f);
+        }
+        if (totalScore == 0)
+        {
+            FindObjectOfType<SfxManager>().PlaySound("gamble_fail", 0.5f);
+        }
+    }
+
+    public void OnLock()
+    {
+
         if (!categoryFlag.GetValueOrDefault("four_of_a_kind"))
         {
             if (FindObjectOfType<ScoreFours>().score != 0)
@@ -86,6 +100,7 @@ public class GamblingManager : MonoBehaviour
                 categoryFlag.Add("four_of_a_kind", true);
                 // Four of a kind firerate
                 var ratio = FindObjectOfType<ScoreFours>().GetMultiplierRatio();
+                print("GO FOUR OF A KIND! " + ratio);
                 switch (completions)
                 {
                     case 0:
@@ -106,9 +121,11 @@ public class GamblingManager : MonoBehaviour
         {
             if (FindObjectOfType<ScoreTwoPair>().score != 0)
             {
+
                 categoryFlag.Add("two_pairs", true);
                 // At most we half the spread
                 var ratio = FindObjectOfType<ScoreTwoPair>().GetMultiplierRatio();
+                print("GO TWO PAIRS! " + ratio);
                 switch (completions)
                 {
                     case 0:
@@ -129,6 +146,7 @@ public class GamblingManager : MonoBehaviour
         {
             if (FindObjectOfType<ScoreStraight>().score != 0)
             {
+                print("GO STRAIGHT!");
                 categoryFlag.Add("straight", true);
                 FindObjectOfType<PlayerController>().GetComponent<Health>().hp = 10;
             }
@@ -142,6 +160,7 @@ public class GamblingManager : MonoBehaviour
                 categoryFlag.Add("three_of_a_kind", true);
                 // Max we increase movement speed by 1.5 factor
                 var ratio = FindObjectOfType<ScoreThrees>().GetMultiplierRatio();
+                print("GO THREE OF A KIND! " + ratio);
                 FindObjectOfType<PlayerMovement>().moveSpeed *= ratio;
             }
         }
@@ -151,6 +170,7 @@ public class GamblingManager : MonoBehaviour
         {
             if (FindObjectOfType<ScoreYatzhee>().score != 0)
             {
+                print("GO YAHTZEE!");
                 categoryFlag.Add("yahtzee", true);
                 // Remove all enemies
                 foreach (var enemy in FindObjectsOfType<Enemy>())
@@ -158,16 +178,6 @@ public class GamblingManager : MonoBehaviour
                     Destroy(enemy.gameObject);
                 }
             }
-        }
-
-        // Threshold for playing gambling success/fail sfx?
-        if (totalScore >= 15)
-        {
-            FindObjectOfType<SfxManager>().PlaySound("gamble_success", 0.5f);
-        }
-        if (totalScore == 0)
-        {
-            FindObjectOfType<SfxManager>().PlaySound("gamble_fail", 0.5f);
         }
     }
 
