@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     [SerializeField] public SpawnPoint[] spawnPoints;
     private float timeAtEnter;
-    private int barFightDuration = 3;
+    private int barFightDuration = 30;
     private float timeBetweenSpawns = 2.0f;
     private const float MIN_SPAWN_TIME = 1.0f;
     private const float SPAWN_TIME_DECAY = 0.005f;
