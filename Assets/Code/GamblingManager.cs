@@ -94,7 +94,7 @@ public class GamblingManager : MonoBehaviour
 
         if (!categoryFlag.GetValueOrDefault("four_of_a_kind"))
         {
-            if (FindObjectOfType<ScoreFours>().score != 0)
+            if (FindObjectOfType<ScoreFours>().score != 0 && FindObjectOfType<ScoreFours>().isLocked)
             {
                 categoryFlag.Add("four_of_a_kind", true);
                 // Four of a kind firerate
@@ -118,7 +118,7 @@ public class GamblingManager : MonoBehaviour
         // Two pairs decrease spread
         if (!categoryFlag.GetValueOrDefault("two_pairs"))
         {
-            if (FindObjectOfType<ScoreTwoPair>().score != 0)
+            if (FindObjectOfType<ScoreTwoPair>().score != 0 && FindObjectOfType<ScoreTwoPair>().isLocked)
             {
 
                 categoryFlag.Add("two_pairs", true);
@@ -143,7 +143,7 @@ public class GamblingManager : MonoBehaviour
         // Straight heals to max
         if (!categoryFlag.GetValueOrDefault("straight"))
         {
-            if (FindObjectOfType<ScoreStraight>().score != 0)
+            if (FindObjectOfType<ScoreStraight>().score != 0 && FindObjectOfType<ScoreStraight>().isLocked)
             {
                 print("GO STRAIGHT!");
                 categoryFlag.Add("straight", true);
@@ -154,7 +154,7 @@ public class GamblingManager : MonoBehaviour
         // Three of a kind increases movement speed
         if (!categoryFlag.GetValueOrDefault("three_of_a_kind"))
         {
-            if (FindObjectOfType<ScoreThrees>().score != 0)
+            if (FindObjectOfType<ScoreThrees>().score != 0 && FindObjectOfType<ScoreThrees>().isLocked)
             {
                 categoryFlag.Add("three_of_a_kind", true);
                 // Max we increase movement speed by 1.5 factor
@@ -166,7 +166,7 @@ public class GamblingManager : MonoBehaviour
 
         if (!categoryFlag.GetValueOrDefault("full_house"))
         {
-            if (FindObjectOfType<ScoreFullHouse>().score != 0)
+            if (FindObjectOfType<ScoreFullHouse>().score != 0 && FindObjectOfType<ScoreFullHouse>().isLocked)
             {
                 categoryFlag.Add("full_house", true);
                 switch (completions)
@@ -187,7 +187,7 @@ public class GamblingManager : MonoBehaviour
         // Yahtzee kills all enemies
         if (!categoryFlag.GetValueOrDefault("yahtzee"))
         {
-            if (FindObjectOfType<ScoreYatzhee>().score != 0)
+            if (FindObjectOfType<ScoreYatzhee>().score != 0 && FindObjectOfType<ScoreYatzhee>().isLocked)
             {
                 print("GO YAHTZEE!");
                 categoryFlag.Add("yahtzee", true);

@@ -31,7 +31,7 @@ public class Chasing : MonoBehaviour
         // Sprite flippage
         spre.flipX = (target.position.x < transform.position.x);
 
-        agent.speed = 2.5f * scale.GetEnemyMovementMultiplier();
+        agent.speed = 5f * scale.GetEnemyMovementMultiplier();
         // Set target for agent so it knows where to move
         agent.SetDestination(target.transform.position);
 

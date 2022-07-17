@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10722149ff7aba94386aa7ff7a74e8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 3
   invinsibilityTimer: 0
 --- !u!114 &3922167228182960823
 MonoBehaviour:
