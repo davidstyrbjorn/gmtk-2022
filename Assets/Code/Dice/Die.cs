@@ -15,6 +15,7 @@ public class Die : MonoBehaviour
     Quaternion startRotation;
     Vector3 startScale;
 
+    float stuckTime = 0f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,9 +35,31 @@ public class Die : MonoBehaviour
         Vector3 force = new Vector3(0, 0, fallForce);
 
         rb.AddForce(force);
-    }
 
-    public void Throw()
+        if (!IsMoving())
+		{
+            stuckTime += Time.fixedDeltaTime;
+
+            if (stuckTime > 1f)
+            {
+                if (!HasValue())
+                    Throw();
+            }
+        }
+        else
+		{
+            stuckTime = 0;
+		}
+    }
+	private void OnCollisionStay(Collision collision)
+	{
+		if (collision.gameObject.tag == "dicewall")
+		{
+            rb.AddForce(collision.gameObject.transform.up * 20);
+		}
+	}
+
+	public void Throw()
     {
         if (!rb) rb = GetComponent<Rigidbody>();
 
@@ -55,6 +78,8 @@ public class Die : MonoBehaviour
         rb.AddTorque(dirX, dirY, dirZ);
 
         value = 0;
+
+        stuckTime = 0f;
     }
     public bool HasValue()
     {
@@ -129,7 +154,7 @@ public class Die : MonoBehaviour
         {
             if (rigidBody.gameObject.TryGetComponent(out Die die))
             {
-                if (!die.IsMoving())
+                if (!die.IsMoving() && die.HasValue())
                     die.SetLocked(!die.GetLocked());
             }
         }
