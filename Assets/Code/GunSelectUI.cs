@@ -47,13 +47,7 @@ public class GunSelectUI : MonoBehaviour
             {
                 card.color = Vector4.MoveTowards(card.color, new Color(0, 0, 0, 0.2f), 2.0f * Time.deltaTime);
             }
-        }
-        else
-        {
-            foreach (var card in cards)
-            {
-                card.color = Vector4.MoveTowards(card.color, Color.white, 2.0f * Time.deltaTime);
-            }
+            return;
         }
 
         // Enable disable cards dependent on if they're unlocked or not
@@ -95,7 +89,7 @@ public class GunSelectUI : MonoBehaviour
         float renderTime = 3f;
         float renderProgression = timeSinceNewWeapon / renderTime;
         if (timeSinceNewWeapon < renderTime)
-		{
+        {
             TMPro.TextMeshProUGUI textMesh = unlockedWeaponTextObject.GetComponent<TMPro.TextMeshProUGUI>();
             Color newColor = new Color();
             newColor.r = textMesh.color.r;
