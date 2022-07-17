@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   gunSprite: {fileID: 21300000, guid: c85dda9db94667540a3d8e9324997351, type: 3}
-  spread: 2
-  fireRate: 2
+  spread: 1.4770508
+  fireRate: 4
   projectilesPerShot: 1
   cameraShakeIntensity: 0.05
   cameraShakeDecayRate: 0.2
