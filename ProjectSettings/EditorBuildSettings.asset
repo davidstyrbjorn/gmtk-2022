@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
     guid: 546454ace24fd55448065a8476a01174
   - enabled: 1
-    path: Assets/Scenes/david.unity
-    guid: a9b445e3400bc774284c5b125c67eb8c
+    path: Assets/Scenes/MainScene.unity
+    guid: 14b17449dbe6b614589457248221c8a5
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: ba196df93e02e924bb3d2de562235e17
