@@ -17,6 +17,16 @@ public class ScoreStraight : ScoreFunction
         return score;
     }
 
+    public override float GetMultiplierRatio()
+    {
+        return 1.0f;
+    }
+
+    public override string GetTooltipText()
+    {
+        return "Refills your <color=red>vigor</color>";
+    }
+
     // Start is called before the first frame update
     void Start()
     {

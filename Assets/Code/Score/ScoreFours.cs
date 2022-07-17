@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ScoreFours : ScoreFunction
 {
+    const float FOURS_MAX = 24;
+
     public override int CountScore(int[] results)
     {
         score = 0;
@@ -16,14 +18,28 @@ public class ScoreFours : ScoreFunction
             }
         }
 
-        string s = $@"<align=left>Three of a kind<line-height=0>
+        string s = $@"<align=left>Four of a kind<line-height=0>
         <align=right>{score.ToString()}<line-height=1em>";
         GetComponent<TMPro.TextMeshProUGUI>().SetText(s);
 
         return score;
     }
 
-    // Start is called before the first frame update
+    public override float GetMultiplierRatio()
+    {
+        return 1 + (score / FOURS_MAX);
+    }
+
+    public override string GetTooltipText()
+    {
+        var gun = "Nothing";
+        var completions = FindObjectOfType<GamblingManager>().completions;
+        if (completions == 0) gun = "Revolver";
+        if (completions == 1) gun = "Shotgun";
+        if (completions == 2) gun = "Tommygun";
+        return $"Gain <color=green>+{Mathf.RoundToInt((GetMultiplierRatio() - 1) * 100.0f)}%</color> fire rate increase ({gun})";
+    }
+
     void Start()
     {
         isLocked = false;
