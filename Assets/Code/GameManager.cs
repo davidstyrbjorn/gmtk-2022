@@ -161,11 +161,8 @@ public class GameManager : MonoBehaviour
         // Instantiate enemy at that position
         var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         enemy.transform.SetParent(mapParent);
-<<<<<<< Updated upstream
         enemy.GetComponent<Health>().hp = scale.GetEnemyHP();
-=======
         enemy.GetComponent<Animator>().runtimeAnimatorController = enemyAnimators[Random.Range(0, enemyAnimators.Count)];
->>>>>>> Stashed changes
     }
 
     public void OnBarFightOver()
