@@ -71994,6 +71994,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3584704741689044388, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.8851013
+      objectReference: {fileID: 0}
     - target: {fileID: 4497440530482834617, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -72142,6 +72146,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 291474874}
+    - target: {fileID: 6975280121110283034, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
+      propertyPath: m_margin.w
+      value: 0.5767212
+      objectReference: {fileID: 0}
     - target: {fileID: 7437508942619461489, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
       propertyPath: m_text
       value: '<align=left>Straight<line-height=0>
