@@ -112,10 +112,11 @@ public class GameManager : MonoBehaviour
 
         if (playerController.deathFlag) return;
 
-        string text = " Barfight number: " + (timesGambled + 1).ToString();
-        text += "\n EnemySpawnRateMultiplier: " + scale.GetEnemySpawnRateMultiplier();
-        text += "\n EnemyMoveSpeedMultiplier: " + scale.GetEnemyMovementMultiplier();
-        debugText.SetText(text);
+        // string text = " Barfight number: " + (timesGambled + 1).ToString();
+        // text += "\n EnemySpawnRateMultiplier: " + scale.GetEnemySpawnRateMultiplier();
+        // text += "\n EnemyMoveSpeedMultiplier: " + scale.GetEnemyMovementMultiplier();
+        // debugText.SetText(text);
+
         // Bar fight updates
         if (gameState == GAME_STATE.BAR_FIGHT)
         {
