@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ScoreFullHouse : ScoreFunction, IPointerEnterHandler, IPointerExitHandler
+public class ScoreFullHouse : ScoreFunction
 {
     public override int CountScore(int[] results)
     {
@@ -25,14 +25,14 @@ public class ScoreFullHouse : ScoreFunction, IPointerEnterHandler, IPointerExitH
         return score;
     }
 
-    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+    public override float GetMultiplierRatio()
     {
-        throw new System.NotImplementedException();
+        return 1.0f;
     }
 
-    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+    public override string GetTooltipText()
     {
-        throw new System.NotImplementedException();
+        return "No real benefit but the sweet relief";
     }
 
     // Start is called before the first frame update

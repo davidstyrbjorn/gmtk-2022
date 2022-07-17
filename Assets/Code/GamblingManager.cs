@@ -22,9 +22,6 @@ public class GamblingManager : MonoBehaviour
     private GunBehavior gunBehavior;
 
     const int ONE_PAIR_MAX = 12;
-    const int TWO_PAIR_MAX = 22;
-    const int THREES_MAX = 18;
-    const int FOURS_MAX = 24;
 
     private string[] categories = new string[] { "pair", "two_pairs", "three_of_a_kind", "four_of_a_kind", "straight", "yahtzee" };
     private Dictionary<string, bool> categoryFlag = new Dictionary<string, bool>();
@@ -84,7 +81,7 @@ public class GamblingManager : MonoBehaviour
             {
                 categoryFlag.Add("four_of_a_kind", true);
                 // Four of a kind firerate
-                var ratio = 1 + (FindObjectOfType<ScoreFours>().score / FOURS_MAX);
+                var ratio = FindObjectOfType<ScoreFours>().GetMultiplierRatio();
                 switch (completions)
                 {
                     case 0:
@@ -107,7 +104,7 @@ public class GamblingManager : MonoBehaviour
             {
                 categoryFlag.Add("two_pairs", true);
                 // At most we half the spread
-                var ratio = 1.0f + FindObjectOfType<ScoreTwoPair>().score / TWO_PAIR_MAX;
+                var ratio = FindObjectOfType<ScoreTwoPair>().GetMultiplierRatio();
                 switch (completions)
                 {
                     case 0:
@@ -140,7 +137,7 @@ public class GamblingManager : MonoBehaviour
             {
                 categoryFlag.Add("three_of_a_kind", true);
                 // Max we increase movement speed by 1.5 factor
-                var ratio = 1.0f + ((FindObjectOfType<ScoreThrees>().score / THREES_MAX) * 0.5f);
+                var ratio = FindObjectOfType<ScoreThrees>().GetMultiplierRatio();
                 FindObjectOfType<PlayerMovement>().moveSpeed *= ratio;
             }
         }

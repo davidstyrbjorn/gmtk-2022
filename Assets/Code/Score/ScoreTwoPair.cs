@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ScoreTwoPair : ScoreFunction
 {
+    const float TWO_PAIR_MAX = 22;
+
+
     public override int CountScore(int[] results)
     {
         score = 0;
@@ -25,6 +28,22 @@ public class ScoreTwoPair : ScoreFunction
         GetComponent<TMPro.TextMeshProUGUI>().SetText(s);
 
         return score;
+    }
+
+    public override float GetMultiplierRatio()
+    {
+        return 1.0f + ((score / TWO_PAIR_MAX) * 0.3f);
+    }
+
+    public override string GetTooltipText()
+    {
+        var gun = "Nothing";
+        var completions = FindObjectOfType<GamblingManager>().completions;
+        if (completions == 0) gun = "Revolver";
+        if (completions == 1) gun = "Shotgun";
+        if (completions == 2) gun = "Tommygun";
+
+        return $"Decreases spread by <color=green>-{Mathf.Round((GetMultiplierRatio() - 1.0f) * 100.0f)}%</color> ({gun})";
     }
 
     // Start is called before the first frame update
