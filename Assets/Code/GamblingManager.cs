@@ -16,7 +16,7 @@ public class GamblingManager : MonoBehaviour
     [SerializeField]
     private int throws = 0;
 
-    [SerializeField] GameObject noThrowsAlert;
+    [SerializeField] private GameObject noThrowsAlert;
 
     public int completions = 0;
     private static int totalScore = 0;
