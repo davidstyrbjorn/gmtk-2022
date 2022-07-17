@@ -14,9 +14,13 @@ public class DrinkFromKitchen : MonoBehaviour
     void Update()
     {
         // Check if we're close enough to drink
-        if (Vector2.Distance(transform.position, kitchenTransform.position) < 2)
+        if (Vector2.Distance(transform.position, kitchenTransform.position) < 4)
         {
             closeEnough = true;
+        }
+        else
+        {
+            closeEnough = false;
         }
 
         // Actual input
@@ -27,19 +31,23 @@ public class DrinkFromKitchen : MonoBehaviour
             {
                 health.hp++;
                 health.hp = Mathf.Min(10, health.hp);
+                canDrink = false;
+                StartCoroutine("canDrinkRoutine");
             }
         }
 
         // UI Effect
-        if (closeEnough & canDrink)
+        if (closeEnough && canDrink)
         {
             text.SetText("Press F to take a swig <color=green>+1 Health</color>");
-            canDrink = false;
-            StartCoroutine("canDrinkRoutine");
         }
-        if (closeEnough && !canDrink)
+        else if (closeEnough && !canDrink)
         {
             text.SetText("Come back soon...");
+        }
+        else
+        {
+            text.SetText("");
         }
     }
 
