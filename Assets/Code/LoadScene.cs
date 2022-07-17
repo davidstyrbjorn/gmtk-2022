@@ -7,6 +7,7 @@ public class LoadScene : MonoBehaviour
 {
     public void Load(string inputScene)
     {
+        GamblingManager.resetScore();
         SceneManager.LoadScene(inputScene);
     }
 }

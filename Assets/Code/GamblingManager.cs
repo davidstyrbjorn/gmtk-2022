@@ -34,7 +34,8 @@ public class GamblingManager : MonoBehaviour
         noThrowsAlert.SetActive(false);
     }
 
-    public int getScore() { return totalScore; }
+    public static int getScore() { return totalScore; }
+    public static void resetScore() { totalScore = 0; }
     public void addTotalScore(int toAdd) { totalScore += toAdd; }
 
     public void resetThrows()
