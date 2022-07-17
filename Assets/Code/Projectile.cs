@@ -54,7 +54,9 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D (Collision2D collision)
     {
-        if(!collision.collider.transform.CompareTag("Player") && !collision.collider.transform.CompareTag("projectile"))
+        if(!collision.collider.transform.CompareTag("Player") && 
+            !collision.collider.transform.CompareTag("projectile") &&
+            !collision.collider.transform.CompareTag("props"))
             Destroy(gameObject);
     }
 
