@@ -15,7 +15,7 @@ public class EnemyAnimation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!animator.GetBool("isDying") && TryGetComponent(out Enemy e))
+        if (TryGetComponent(out Enemy e))
             animator.SetBool("isMoving", e.isActiveAndEnabled);
         if (TryGetComponent(out NavMeshAgent agent))
             animator.speed = agent.speed / 10f;
@@ -26,23 +26,7 @@ public class EnemyAnimation : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             animator.speed = 2f;
-            StartCoroutine(Attack());
+            animator.SetTrigger("isAttacking");
         }
-    }
-    public void StartDie()
-    {
-        StartCoroutine(Die());
-    }
-    IEnumerator Die()
-    {
-        animator.SetBool("isDying", true);
-        yield return new WaitForSeconds(1);
-        Destroy(gameObject);
-    }
-    IEnumerator Attack()
-    {
-        animator.SetBool("isAttacking", true);
-        yield return new WaitForSeconds(0.7f);
-        animator.SetBool("isAttacking", false);
     }
 }

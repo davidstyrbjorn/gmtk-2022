@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     private Health health;
-    private bool isDying = false;
     private int lastFrameHealth = 0;
     SfxManager sfxManager;
 
@@ -26,14 +24,11 @@ public class Enemy : MonoBehaviour
         }
 
         // Check for death
-        if (health.hp <= 0 && !isDying)
+        if (health.hp <= 0)
         {
             // We have taken damage
-            isDying = true;
             sfxManager.PlaySound("enemy_hurt", 0.65f);
-            GetComponent<Chasing>().enabled = false;
-            GetComponent<NavMeshAgent>().enabled = false;
-            GetComponent<EnemyAnimation>().StartDie();
+            Destroy(gameObject);
         }
 
         lastFrameHealth = health.hp;
