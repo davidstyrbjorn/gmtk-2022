@@ -9,6 +9,6 @@ public class ScoreScript : MonoBehaviour
     void Start()
     {
         int score = GamblingManager.getScore();
-        GetComponent<TextMeshProUGUI>().text = "Yatzhee Score: " + score.ToString();
+        GetComponent<TextMeshProUGUI>().text = "Yahtzee Score: " + score.ToString();
     }
 }
