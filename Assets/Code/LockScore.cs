@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class LockScore : MonoBehaviour
+public class LockScore : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public TextMeshProUGUI text;
-    private GamblingManager gamblingManager;
+
     private ScoreFunction scoreFunc;
     private DiceManager diceManager;
 
     private void Start()
     {
         scoreFunc = GetComponent<ScoreFunction>();
-        gamblingManager = FindObjectOfType<GamblingManager>();
+        text = GetComponent<TextMeshProUGUI>();
     }
 
     public void OnMouseEnter()
@@ -26,31 +27,50 @@ public class LockScore : MonoBehaviour
         if (!scoreFunc.isLocked)
             text.color = new Color(1, 1, 1);
     }
-    public void OnMouseOver()
+
+    public void ShowTooltip(ScoreFunction scoreFunction)
     {
-        if (Input.GetMouseButtonDown(0))
+
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (!scoreFunc.isLocked)
         {
-            if (!scoreFunc.isLocked)
+            GamblingManager gamblingManager = FindObjectOfType<GamblingManager>();
+            scoreFunc.isLocked = true;
+            text.color = new Color(1, 0, 0);
+            gamblingManager.resetThrows();
+            FindObjectOfType<DiceManager>().UnlockAllDice();
+
+            //Is the sheet completed?
+            if (gamblingManager.AttemptResetSheet())
             {
-                scoreFunc.isLocked = true;
-                text.color = new Color(1, 0, 0);
-                gamblingManager.resetThrows();
-                FindObjectOfType<DiceManager>().UnlockAllDice();
-
-                //Is the sheet completed?
-                if (gamblingManager.AttemptResetSheet())
-                {
-                    gamblingManager.ResetColors();
-                }
-
-                FindObjectOfType<GameManager>().OnGamblingOver();
-                gamblingManager.ToggleGambling(false);
+                gamblingManager.ResetColors();
             }
+
+            FindObjectOfType<GameManager>().OnGamblingOver();
+            gamblingManager.ToggleGambling(false);
         }
     }
 
     public void ResetColor()
     {
         text.color = new Color(1, 1, 1);
+    }
+
+    // Some hover styles
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        text.fontStyle = FontStyles.Underline;
+        // showtooltip
+        FindObjectOfType<GamblingManager>().tooltip.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        text.fontStyle = FontStyles.Normal;
+        FindObjectOfType<GamblingManager>().tooltip.SetActive(false);
+
     }
 }

@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
         // Disable bar fight objects, set enabled to false
         ToggleBarFight(true);
         gameState = GAME_STATE.BAR_FIGHT;
-        Cursor.SetCursor(crosshairCursor, new Vector2(crosshairCursor.width/2, crosshairCursor.height/2), CursorMode.Auto);
+        Cursor.SetCursor(crosshairCursor, new Vector2(crosshairCursor.width / 2, crosshairCursor.height / 2), CursorMode.Auto);
         timeAtEnter = Time.timeSinceLevelLoad;
     }
 

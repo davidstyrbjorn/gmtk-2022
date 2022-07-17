@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ScoreFullHouse : ScoreFunction
+public class ScoreFullHouse : ScoreFunction, IPointerEnterHandler, IPointerExitHandler
 {
     public override int CountScore(int[] results)
     {
@@ -17,9 +18,21 @@ public class ScoreFullHouse : ScoreFunction
 
         if (triplet != 0 && pair != 0) score = 30;
 
-        scoreVisualizer.text = score.ToString();
+        string s = $@"<align=left>Full House<line-height=0>
+        <align=right>{score.ToString()}<line-height=1em>";
+        GetComponent<TMPro.TextMeshProUGUI>().SetText(s);
 
         return score;
+    }
+
+    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
     }
 
     // Start is called before the first frame update
@@ -28,4 +41,6 @@ public class ScoreFullHouse : ScoreFunction
         isLocked = false;
         score = 0;
     }
+
+
 }

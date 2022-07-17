@@ -16,7 +16,9 @@ public class ScoreFours : ScoreFunction
             }
         }
 
-        scoreVisualizer.text = score.ToString();
+        string s = $@"<align=left>Three of a kind<line-height=0>
+        <align=right>{score.ToString()}<line-height=1em>";
+        GetComponent<TMPro.TextMeshProUGUI>().SetText(s);
 
         return score;
     }

@@ -20,7 +20,9 @@ public class ScoreTwoPair : ScoreFunction
 
         if (pairOne != 0 && pairTwo != 0) score = pairOne * 2 + pairTwo * 2;
 
-        scoreVisualizer.text = score.ToString();
+        string s = $@"<align=left>Two of a kind<line-height=0>
+        <align=right>{score.ToString()}<line-height=1em>";
+        GetComponent<TMPro.TextMeshProUGUI>().SetText(s);
 
         return score;
     }

@@ -14,8 +14,9 @@ public class ScoreOnePair : ScoreFunction
                 score = (i + 1) * 2;
             }
         }
-
-        scoreVisualizer.text = score.ToString();
+        string s = $@"<align=left>Pair<line-height=0>
+        <align=right>{score.ToString()}<line-height=1em>";
+        GetComponent<TMPro.TextMeshProUGUI>().SetText(s);
 
         return score;
     }

@@ -16,7 +16,9 @@ public class ScoreYatzhee : ScoreFunction
             }
         }
 
-        scoreVisualizer.text = score.ToString();
+        string s = $@"<align=left>Yahtzee<line-height=0>
+        <align=right>{score.ToString()}<line-height=1em>";
+        GetComponent<TMPro.TextMeshProUGUI>().SetText(s);
 
         return score;
     }
