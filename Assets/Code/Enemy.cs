@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
     float damageTime = -100;
 
     SfxManager sfxManager;
+    private GameManager gameManager;
+
+    public static int pukeLayer = 10;
 
     void Start()
     {
@@ -19,6 +22,7 @@ public class Enemy : MonoBehaviour
         health = GetComponent<Health>();
         transform.tag = "enemy";
         lastFrameHealth = health.hp;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -55,13 +59,19 @@ public class Enemy : MonoBehaviour
         // Check for death
         if (health.hp <= 0 && !isDying)
         {
-            // We have taken damage
             isDying = true;
             sfxManager.PlaySound("enemy_hurt", 0.65f);
             GetComponent<Chasing>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<EnemyAnimation>().StartDie();
             GetComponent<Collider2D>().enabled = false;
+            // Spawn decal at position
+            if (Random.Range(0.0f, 1.0f) > 0.5f) return;
+            GameObject decal = (GameObject)Instantiate(gameManager.pukePrefab, transform.position, Quaternion.identity);
+            decal.GetComponent<SpriteRenderer>().color
+                = new Vector4(Random.Range(0.5f, 1), Random.Range(0.5f, 1), Random.Range(0.5f, 1), 1);
+            decal.GetComponent<SpriteRenderer>().sortingOrder = Enemy.pukeLayer;
+            Enemy.pukeLayer++;
         }
 
         lastFrameHealth = health.hp;
