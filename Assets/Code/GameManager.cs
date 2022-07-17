@@ -12,8 +12,25 @@ public enum GAME_STATE
     GAMBLING
 }
 
+
+
 public class GameManager : MonoBehaviour
 {
+    [System.Serializable]
+    public struct SpawnPoint
+    {
+        public SECTION section;
+        public Transform transform;
+    }
+
+    [System.Serializable]
+    public enum SECTION
+    {
+        BAR,
+        KITCHEN,
+        GAME
+    }
+
     public GAME_STATE gameState = GAME_STATE.BAR_FIGHT;
     public AudioSource bg_barfight;
     public AudioSource bg_gamble;
@@ -26,7 +43,7 @@ public class GameManager : MonoBehaviour
     [Header("Bar Fight")]
     public Transform mapParent;
     public GameObject enemyPrefab;
-    public Transform spawnPointsParent;
+    [SerializeField] public SpawnPoint[] spawnPoints;
     private float timeAtEnter;
     public int barFightDuration = 10;
     private float timeBetweenSpawns = 2.0f;
@@ -39,6 +56,7 @@ public class GameManager : MonoBehaviour
     public float backgroundMusicVolume = 0.5f;
 
     public TMPro.TextMeshProUGUI countdownTimer;
+    private PlayerController playerController;
 
     void Start()
     {
@@ -48,6 +66,8 @@ public class GameManager : MonoBehaviour
 
         // Background music seutp
         Cursor.SetCursor(crosshairCursor, new Vector2(crosshairCursor.width / 2, crosshairCursor.height / 2), CursorMode.Auto);
+
+        playerController = FindObjectOfType<PlayerController>();
 
         bg_barfight.volume = backgroundMusicVolume;
         bg_gamble.volume = backgroundMusicVolume;
@@ -95,12 +115,11 @@ public class GameManager : MonoBehaviour
     void SpawnEnemies()
     {
         timeSinceLastSpawn = 0.0f;
-        // Pick a random spawn point
-        var spawnPoints = new List<Transform>(spawnPointsParent.GetComponentsInChildren<Transform>());
-        spawnPoints.RemoveAt(0);
 
-        int index = Random.Range(0, spawnPoints.Count);
-        Vector2 spawnPoint = spawnPoints[index].position;
+        // Filter and pick spawn point
+        var filtered = spawnPoints.ToList().FindAll(sp => sp.section != playerController.currentSection);
+        int index = Random.Range(0, filtered.Count);
+        Vector2 spawnPoint = filtered[index].transform.position;
 
         // Instantiate enemy at that position
         var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);

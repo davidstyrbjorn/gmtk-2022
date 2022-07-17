@@ -9,8 +9,11 @@ public class PlayerController : MonoBehaviour
 
     private SfxManager sfxManager;
 
+    public GameManager.SECTION currentSection;
+
     void Start()
     {
+        currentSection = GameManager.SECTION.BAR;
         health = GetComponent<Health>();
         lastFrameHealth = health.hp;
         sfxManager = FindObjectOfType<SfxManager>();
@@ -32,5 +35,21 @@ public class PlayerController : MonoBehaviour
         }
 
         lastFrameHealth = health.hp;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "bar")
+        {
+            currentSection = GameManager.SECTION.BAR;
+        }
+        else if (other.tag == "kitchen")
+        {
+            currentSection = GameManager.SECTION.KITCHEN;
+        }
+        else if (other.tag == "game")
+        {
+            currentSection = GameManager.SECTION.GAME;
+        }
     }
 }

@@ -11,6 +11,9 @@ TagManager:
   - background_music
   - projectile
   - props
+  - bar
+  - kitchen
+  - game
   layers:
   - Default
   - TransparentFX
