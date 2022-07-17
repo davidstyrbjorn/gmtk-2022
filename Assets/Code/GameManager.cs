@@ -160,6 +160,7 @@ public class GameManager : MonoBehaviour
         // Instantiate enemy at that position
         var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         enemy.transform.SetParent(mapParent);
+        enemy.GetComponent<Health>().hp = scale.GetEnemyHP();
     }
 
     public void OnBarFightOver()

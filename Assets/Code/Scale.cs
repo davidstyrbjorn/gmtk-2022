@@ -22,4 +22,32 @@ public class Scale : MonoBehaviour
         const float MUTLIPLIER_PER_ROUND_PLAYED = 0.1f;
         return 1.2f + MUTLIPLIER_PER_ROUND_PLAYED * gameManager.timesGambled;
     }
+
+    public int GetEnemyHP()
+    {
+        // SLOOW scale of HP over time
+
+        if (gameManager.timesGambled >= 24)
+        {
+            return 8;
+        }
+        if (gameManager.timesGambled >= 22)
+        {
+            return 7;
+        }
+        else if (gameManager.timesGambled >= 18)
+        {
+            return 6;
+        }
+        else if (gameManager.timesGambled >= 13)
+        {
+            return 5;
+        }
+        else if (gameManager.timesGambled >= 8)
+        {
+            return 4;
+        }
+
+        return 3; // Base
+    }
 }
