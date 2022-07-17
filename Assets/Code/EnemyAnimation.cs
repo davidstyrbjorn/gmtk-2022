@@ -18,7 +18,7 @@ public class EnemyAnimation : MonoBehaviour
         if (!animator.GetBool("isDying") && TryGetComponent(out Enemy e))
             animator.SetBool("isMoving", e.isActiveAndEnabled);
         if (TryGetComponent(out NavMeshAgent agent))
-            animator.speed = agent.speed / 10f;
+            animator.speed = agent.speed / 20f;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
