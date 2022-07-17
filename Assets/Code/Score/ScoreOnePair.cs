@@ -32,7 +32,7 @@ public class ScoreOnePair : ScoreFunction
         {
             return "Omit line. No Pairs";
         }
-        return "<color=green>Heal</color> for one";
+        return "Restore one <color=red>vigor</color>";
     }
 
     // Start is called before the first frame update
