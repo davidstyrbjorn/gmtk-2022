@@ -27,9 +27,6 @@ public class Enemy : MonoBehaviour
         if (lastFrameHealth > health.hp)
         {
             // We have taken damage
-            sfxManager.PlaySound("player_hurt", 0.65f);
-            Camera.main.GetComponent<CameraShake>().DoShake(0.1f, 0.6f);
-
             damageTime = Time.time;
         }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class IntroSceneController : MonoBehaviour
 {
@@ -27,7 +28,9 @@ public class IntroSceneController : MonoBehaviour
         {
             currentFrame = (currentFrame + 1);
             if (currentFrame >= frames.Count)
-                return;
+            {
+                SceneManager.LoadScene("MainScene");
+            }
 
             increaseFade = true;
         }

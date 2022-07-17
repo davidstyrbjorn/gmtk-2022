@@ -32,6 +32,10 @@ public class ScoreFours : ScoreFunction
 
     public override string GetTooltipText()
     {
+        if (score == 0)
+        {
+            return "Omit line. No Four of a kind";
+        }
         var gun = "Nothing";
         var completions = FindObjectOfType<GamblingManager>().completions;
         if (completions == 0) gun = "Revolver";

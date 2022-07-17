@@ -32,6 +32,10 @@ public class ScoreFullHouse : ScoreFunction
 
     public override string GetTooltipText()
     {
+        if (score == 0)
+        {
+            return "Omit line. No Fullhouse";
+        }
         var gun = "Nothing";
         var completions = FindObjectOfType<GamblingManager>().completions;
         if (completions == 0) gun = "Revolver";
