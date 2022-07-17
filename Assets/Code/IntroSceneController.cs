@@ -25,7 +25,10 @@ public class IntroSceneController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            currentFrame = (currentFrame + 1) % frames.Count;
+            currentFrame = (currentFrame + 1);
+            if (currentFrame >= frames.Count)
+                return;
+
             increaseFade = true;
         }
 
