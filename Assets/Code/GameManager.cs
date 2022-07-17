@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI debugText;
 
     [Header("Bar Fight")]
+    public List<RuntimeAnimatorController> enemyAnimators;
     public Transform mapParent;
     public GameObject enemyPrefab;
     [SerializeField] public SpawnPoint[] spawnPoints;
@@ -161,6 +162,7 @@ public class GameManager : MonoBehaviour
         var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         enemy.transform.SetParent(mapParent);
         enemy.GetComponent<Health>().hp = scale.GetEnemyHP();
+        enemy.GetComponent<Animator>().runtimeAnimatorController = enemyAnimators[Random.Range(0, enemyAnimators.Count)];
     }
 
     public void OnBarFightOver()
