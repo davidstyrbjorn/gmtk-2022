@@ -33,6 +33,7 @@ public class DrinkFromKitchen : MonoBehaviour
                 health.hp = Mathf.Min(10, health.hp);
                 canDrink = false;
                 StartCoroutine("canDrinkRoutine");
+                FindObjectOfType<SfxManager>().PlaySound("drink");
             }
         }
 
