@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Gambling")]
     public int timesGambled = 0;
+    public TextMeshProUGUI debugText;
 
     [Header("Bar Fight")]
     public Transform mapParent;
@@ -79,6 +80,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        string text = " Barfight number: " + (timesGambled + 1).ToString();
+        text += "\n EnemySpawnRateMultiplier: " + scale.GetEnemySpawnRateMultiplier();
+        text += "\n EnemyMoveSpeedMultiplier: " + scale.GetEnemyMovementMultiplier();
+        debugText.SetText(text);
         // Bar fight updates
         if (gameState == GAME_STATE.BAR_FIGHT)
         {
