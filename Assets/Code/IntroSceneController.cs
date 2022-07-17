@@ -27,10 +27,6 @@ public class IntroSceneController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             currentFrame = (currentFrame + 1);
-            if (currentFrame >= frames.Count)
-            {
-                SceneManager.LoadScene("MainScene");
-            }
 
             increaseFade = true;
         }
@@ -47,12 +43,20 @@ public class IntroSceneController : MonoBehaviour
 
         blackoutImage.color = newColor;
 
+        if (currentFrame >= frames.Count && fadeValue >= 1)
+        {
+           SceneManager.LoadScene("MainScene");
+           return;
+        }
+
         if (increaseFade && fadeValue >= 1)
         {
             int previousFrame = currentFrame == 0 ? frames.Count - 1 : currentFrame - 1;
             increaseFade = false;
             frames[previousFrame].SetActive(false);
-            frames[currentFrame].SetActive(true);
+
+            if (currentFrame < frames.Count)
+                frames[currentFrame].SetActive(true);
         }
     }
 }
