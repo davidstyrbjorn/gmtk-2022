@@ -6,6 +6,8 @@ using TMPro;
 
 public class GamblingManager : MonoBehaviour
 {
+    public GameObject tooltip;
+
     [SerializeField]
     public bool needsUpdate = false;
     public DiceManager diceManager;
