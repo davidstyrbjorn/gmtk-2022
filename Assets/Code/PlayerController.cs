@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private SfxManager sfxManager;
 
     public GameManager.SECTION currentSection;
+    private Animator animator;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
         health = GetComponent<Health>();
         lastFrameHealth = health.hp;
         sfxManager = FindObjectOfType<SfxManager>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -32,7 +34,18 @@ public class PlayerController : MonoBehaviour
         if (health.hp <= 0)
         {
             // Game over!
-            SceneManager.LoadScene("GameOverScene");
+            // SceneManager.LoadScene("GameOverScene");
+            animator.SetTrigger("died");
+            FindObjectOfType<GameManager>().ToggleBarFight(false);
+            // Fade out all enemies
+            foreach (var enemy in FindObjectsOfType<Enemy>())
+            {
+                enemy.GetComponent<SpriteRenderer>().color = Color.clear;
+            }
+            foreach (var lm in FindObjectsOfType<LookAtMouse>())
+            {
+                lm.enabled = false;
+            }
         }
 
         lastFrameHealth = health.hp;
