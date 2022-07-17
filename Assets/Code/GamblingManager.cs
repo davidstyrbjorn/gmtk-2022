@@ -241,10 +241,13 @@ public class GamblingManager : MonoBehaviour
         foreach (ScoreFunction score in scores)
         {
             score.isLocked = false;
+            score.score = 0;
         }
         completions++;
+
         // Reset the flags
         categoryFlag.Clear();
+
         return true;
     }
 
