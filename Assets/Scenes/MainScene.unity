@@ -72109,6 +72109,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4801204760852188494, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
+      propertyPath: m_text
+      value: '<align=left>Three of a kind<line-height=0>
+
+        <align=right>5<line-height=1em>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5342469200821472541, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
+      propertyPath: m_text
+      value: '<align=left>One Pair<line-height=0>
+
+        <align=right>5<line-height=1em>'
+      objectReference: {fileID: 0}
     - target: {fileID: 5410407045807492718, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -72129,14 +72141,44 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6322000732047558685, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
+      propertyPath: m_text
+      value: '<align=left>Four of a kind<line-height=0>
+
+        <align=right>5<line-height=1em>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740780696739212418, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
+      propertyPath: m_text
+      value: '<align=left>Yahtzee<line-height=0>
+
+        <align=right>5<line-height=1em>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6753320708269853109, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
+      propertyPath: m_text
+      value: '<align=left>Two pairs<line-height=0>
+
+        <align=right>5<line-height=1em>'
+      objectReference: {fileID: 0}
     - target: {fileID: 6782428006443521014, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
       propertyPath: m_Name
       value: CANVAS
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833369707470940947, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
+      propertyPath: m_text
+      value: '<align=left>Full House<line-height=0>
+
+        <align=right>5<line-height=1em>'
       objectReference: {fileID: 0}
     - target: {fileID: 6886875065592350149, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 291474874}
+    - target: {fileID: 7437508942619461489, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
+      propertyPath: m_text
+      value: '<align=left>Straight<line-height=0>
+
+        <align=right>5<line-height=1em>'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4489f6a8b0617d48882242a5c91ffa8, type: 3}
 --- !u!1 &6411639990947278650 stripped
