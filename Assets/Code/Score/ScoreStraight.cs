@@ -24,6 +24,10 @@ public class ScoreStraight : ScoreFunction
 
     public override string GetTooltipText()
     {
+        if (score == 0)
+        {
+            return "Omit line. No Straight";
+        }
         return "Refills your <color=red>vigor</color>";
     }
 

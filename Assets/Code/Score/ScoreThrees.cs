@@ -33,6 +33,10 @@ public class ScoreThrees : ScoreFunction
 
     public override string GetTooltipText()
     {
+        if (score == 0)
+        {
+            return "Omit line. No Three of a kind";
+        }
         return $"Gain <color=green>+{Mathf.Round((GetMultiplierRatio() - 1.0f) * 100.0f)}%</color> movement speed increase";
     }
 
