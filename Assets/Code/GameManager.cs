@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI debugText;
 
     [Header("Bar Fight")]
+    public List<RuntimeAnimatorController> enemyAnimators;
     public Transform mapParent;
     public GameObject enemyPrefab;
     [SerializeField] public SpawnPoint[] spawnPoints;
@@ -111,10 +112,16 @@ public class GameManager : MonoBehaviour
 
         if (playerController.deathFlag) return;
 
-        string text = " Barfight number: " + (timesGambled + 1).ToString();
-        text += "\n EnemySpawnRateMultiplier: " + scale.GetEnemySpawnRateMultiplier();
-        text += "\n EnemyMoveSpeedMultiplier: " + scale.GetEnemyMovementMultiplier();
-        debugText.SetText(text);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+
+        // string text = " Barfight number: " + (timesGambled + 1).ToString();
+        // text += "\n EnemySpawnRateMultiplier: " + scale.GetEnemySpawnRateMultiplier();
+        // text += "\n EnemyMoveSpeedMultiplier: " + scale.GetEnemyMovementMultiplier();
+        // debugText.SetText(text);
+
         // Bar fight updates
         if (gameState == GAME_STATE.BAR_FIGHT)
         {
@@ -160,6 +167,8 @@ public class GameManager : MonoBehaviour
         // Instantiate enemy at that position
         var enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         enemy.transform.SetParent(mapParent);
+        enemy.GetComponent<Health>().hp = scale.GetEnemyHP();
+        enemy.GetComponent<Animator>().runtimeAnimatorController = enemyAnimators[Random.Range(0, enemyAnimators.Count)];
     }
 
     public void OnBarFightOver()
@@ -171,6 +180,22 @@ public class GameManager : MonoBehaviour
         timesGambled++;
         gameState = GAME_STATE.GAMBLING;
         Cursor.SetCursor(normalCursor, Vector2.zero, CursorMode.Auto);
+    }
+
+    public void TogglePause()
+    {
+        bool doPause = Time.timeScale == 1;
+
+        if (doPause)
+        {
+            FindObjectOfType<GunBehavior>().enabled = false;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            FindObjectOfType<GunBehavior>().enabled = true;
+            Time.timeScale = 1;
+        }
     }
 
     public void OnGamblingOver()

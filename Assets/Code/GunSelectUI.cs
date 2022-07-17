@@ -9,6 +9,8 @@ public class GunSelectUI : MonoBehaviour
     public RawImage shotgunCard;
     public RawImage tommygunCard;
 
+    public GameObject unlockedWeaponTextObject;
+
     private RawImage[] cards;
     private float selectedY;
 
@@ -16,6 +18,8 @@ public class GunSelectUI : MonoBehaviour
     private GameManager gameManager;
     private GunBehavior gunBehavior;
     private float cardHeight;
+
+    private Vector2 weaponTextStartPosition;
 
     void Start()
     {
@@ -26,7 +30,14 @@ public class GunSelectUI : MonoBehaviour
         cards = new RawImage[] { pistolCard, shotgunCard, tommygunCard };
         selectedY = pistolCard.rectTransform.position.y;
         cardHeight = pistolCard.rectTransform.rect.height;
+
+        weaponTextStartPosition = unlockedWeaponTextObject.GetComponent<RectTransform>().localPosition;
     }
+
+    bool wasShotgunUnlocked = false;
+    bool wasTommygunUnlocked = false;
+
+    float newWeaponTime = -100;
 
     void Update()
     {
@@ -46,8 +57,58 @@ public class GunSelectUI : MonoBehaviour
         }
 
         // Enable disable cards dependent on if they're unlocked or not
-        if (gamblingManager.completions >= 1) shotgunCard.enabled = true;
-        if (gamblingManager.completions >= 2) tommygunCard.enabled = true;
+        if (gamblingManager.completions >= 1)
+        {
+            shotgunCard.color = Color.white;
+            shotgunCard.enabled = true;
+
+            if (!wasShotgunUnlocked)
+            {
+                wasShotgunUnlocked = true;
+                newWeaponTime = Time.time;
+            }
+        }
+        else
+        {
+            shotgunCard.color = new Color(0, 0, 0, 0.7f);
+            wasShotgunUnlocked = false;
+        }
+
+        if (gamblingManager.completions >= 2)
+        {
+            shotgunCard.color = Color.white;
+            tommygunCard.enabled = true;
+            if (!wasTommygunUnlocked)
+            {
+                wasTommygunUnlocked = true;
+                newWeaponTime = Time.time;
+            }
+        }
+        else
+        {
+            tommygunCard.color = new Color(0, 0, 0, 0.7f);
+            wasTommygunUnlocked = false;
+        }
+
+        float timeSinceNewWeapon = Time.time - newWeaponTime;
+
+        float renderTime = 3f;
+        float renderProgression = timeSinceNewWeapon / renderTime;
+        if (timeSinceNewWeapon < renderTime)
+		{
+            TMPro.TextMeshProUGUI textMesh = unlockedWeaponTextObject.GetComponent<TMPro.TextMeshProUGUI>();
+            Color newColor = new Color();
+            newColor.r = textMesh.color.r;
+            newColor.g = textMesh.color.g;
+            newColor.b = textMesh.color.b;
+            newColor.a = Mathf.Clamp01((renderTime / 2) - renderProgression * 2f);
+
+            textMesh.color = newColor;
+            RectTransform rectTransform = unlockedWeaponTextObject.GetComponent<RectTransform>();
+
+            Vector2 anchPosition = new Vector2(weaponTextStartPosition.x, weaponTextStartPosition.y + Mathf.Sin(renderProgression * 5) * 10f);
+            rectTransform.anchoredPosition = anchPosition;
+        }
 
         foreach (var card in cards)
         {
