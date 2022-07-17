@@ -42,6 +42,7 @@ public class LockScore : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
             GamblingManager gamblingManager = FindObjectOfType<GamblingManager>();
             scoreFunc.isLocked = true;
             text.color = new Color(1, 0, 0);
+            gamblingManager.addTotalScore(scoreFunc.score);
             gamblingManager.resetThrows();
             FindObjectOfType<DiceManager>().UnlockAllDice();
 
