@@ -164,6 +164,7 @@ public class GameManager : MonoBehaviour
             // Also toggle chasing & navmeshagent
             enemy.GetComponent<Chasing>().enabled = value;
             enemy.GetComponent<NavMeshAgent>().enabled = value;
+            enemy.GetComponent<Collider2D>().enabled = value;
         }
         foreach (var hp in hps)
         {
