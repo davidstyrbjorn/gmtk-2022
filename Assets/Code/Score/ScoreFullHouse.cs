@@ -37,7 +37,7 @@ public class ScoreFullHouse : ScoreFunction
         if (completions == 0) gun = "Revolver";
         if (completions == 1) gun = "Shotgun";
         if (completions == 2) gun = "Tommygun";
-        return $"Gives your bullet piercing {gun}";
+        return $"Gives your {gun} piercing rounds";
     }
 
     // Start is called before the first frame update
